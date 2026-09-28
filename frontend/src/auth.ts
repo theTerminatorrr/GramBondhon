@@ -1,7 +1,7 @@
 import { UnifiedUser, UserRole } from './types';
 
 /**
- * GRAMBANDHAN UNIFIED MULTI-ROLE AUTHENTICATION CONTROLLER
+ * GramBondhon UNIFIED MULTI-ROLE AUTHENTICATION CONTROLLER
  * 
  * Supports dynamic cross-role lifecycle:
  * - Roles: Farmer, Investor, Buyer
@@ -27,7 +27,7 @@ class AuthManager {
   private loadPersistedSession(): void {
     try {
       // 1. Try unified session
-      const savedUnified = localStorage.getItem('grambandhan_unified_session');
+      const savedUnified = localStorage.getItem('grambondhon_unified_session');
       if (savedUnified) {
         this.currentUser = JSON.parse(savedUnified);
         if (this.currentUser && (!this.currentUser.roles || this.currentUser.roles.length === 0)) {
@@ -37,7 +37,7 @@ class AuthManager {
       }
 
       // 2. Fallback to investor session
-      const savedInvestor = localStorage.getItem('grambandhan_investor_session');
+      const savedInvestor = localStorage.getItem('grambondhon_investor_session');
       if (savedInvestor) {
         const inv = JSON.parse(savedInvestor);
         this.currentUser = {
@@ -146,7 +146,7 @@ class AuthManager {
 
   public signUp(name: string, identifier: string, roles: UserRole[] = ['investor'], phone?: string): UnifiedUser {
     const isEmail = identifier.includes('@');
-    const email = isEmail ? identifier : `${name.toLowerCase().replace(/[^a-z0-9]/g, '')}@grambandhan.bd`;
+    const email = isEmail ? identifier : `${name.toLowerCase().replace(/[^a-z0-9]/g, '')}@GramBondhon.bd`;
     const resolvedPhone = !isEmail ? identifier : (phone || '+880 1711-234567');
 
     const user: UnifiedUser = {
@@ -170,7 +170,7 @@ class AuthManager {
 
   public login(identifier: string, _password?: string, name?: string, roles: UserRole[] = ['investor']): UnifiedUser {
     const isEmail = identifier.includes('@');
-    const email = isEmail ? identifier : `${(name || 'user').toLowerCase().replace(/[^a-z0-9]/g, '')}@grambandhan.bd`;
+    const email = isEmail ? identifier : `${(name || 'user').toLowerCase().replace(/[^a-z0-9]/g, '')}@GramBondhon.bd`;
     const phone = !isEmail ? identifier : '+880 1711-234567';
 
     const user: UnifiedUser = {
@@ -213,8 +213,8 @@ class AuthManager {
   public syncStorage(): void {
     if (!this.currentUser) return;
     try {
-      localStorage.setItem('grambandhan_unified_session', JSON.stringify(this.currentUser));
-      localStorage.setItem('grambandhan_investor_session', JSON.stringify({
+      localStorage.setItem('grambondhon_unified_session', JSON.stringify(this.currentUser));
+      localStorage.setItem('grambondhon_investor_session', JSON.stringify({
         name: this.currentUser.name,
         email: this.currentUser.email,
         phone: this.currentUser.phone,
@@ -240,9 +240,9 @@ class AuthManager {
   public logout(): void {
     this.currentUser = null;
     try {
-      localStorage.removeItem('grambandhan_unified_session');
-      localStorage.removeItem('grambandhan_investor_session');
-      localStorage.removeItem('gb_buyer_session');
+      localStorage.removeItem('GramBondhon_unified_session');
+      localStorage.removeItem('GramBondhon_investor_session');
+      localStorage.removeItem('GramBondhon_buyer_session');
     } catch (e) {
       console.warn('LocalStorage unavailable', e);
     }
