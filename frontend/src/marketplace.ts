@@ -3,7 +3,7 @@ import { Product, BuyerUser, BuyerOrder } from './types';
 import { authManager } from './auth';
 
 /**
- * GRAMBANDHAN (গ্রামীণ বন্ধন) - COMPREHENSIVE MARKETPLACE CONTROLLER
+ * GramBondhon (গ্রামীণ বন্ধন) - COMPREHENSIVE MARKETPLACE CONTROLLER
  * Feature Domain: Marketplace Sector (src/marketplace.ts)
  * 
  * Features:
@@ -409,7 +409,7 @@ export class MarketplaceController {
             </button>
             <div class="market-brand-badge">
               <div class="market-brand-title" style="display:flex;align-items:center;gap:6px;">
-                <img src="/images/logo-white.png" alt="GramBandhan" style="height:26px;width:auto;max-width:140px;object-fit:contain;" />
+                <img src="/images/logo-white.png" alt="GramBondhon" style="height:26px;width:auto;max-width:140px;object-fit:contain;" />
                 <span style="font-size:0.75rem;background:#10B981;color:#FFF;padding:1px 6px;border-radius:10px;font-weight:700;">Store</span>
               </div>
             </div>
@@ -1420,7 +1420,7 @@ export class MarketplaceController {
                         <span style="font-size:1.5rem;">🏛️</span>
                         <div>
                           <strong style="color:#047857;font-size:1.05rem;">Bank Transfer (ইসলামী ব্যাংক / BEFTN)</strong>
-                          <div style="font-size:0.75rem;color:#64748B;">Direct Bank Transfer to GramBandhan Shariah Escrow</div>
+                          <div style="font-size:0.75rem;color:#64748B;">Direct Bank Transfer to GramBondhon Shariah Escrow</div>
                         </div>
                       </div>
                     </div>
@@ -1430,7 +1430,7 @@ export class MarketplaceController {
                   <div class="payment-method-body">
                     <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:0.8rem;color:#166534;">
                       <div><strong>Bank:</strong> Islami Bank Bangladesh Ltd (IBBL)</div>
-                      <div><strong>Account:</strong> GramBandhan Agro Shariah Escrow Fund Ltd</div>
+                      <div><strong>Account:</strong> GramBondhon Agro Shariah Escrow Fund Ltd</div>
                       <div><strong>A/C No:</strong> 2050 7710 8899 001 (Branch: Dilkusha C/A, Dhaka)</div>
                     </div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
