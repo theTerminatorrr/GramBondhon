@@ -5,7 +5,7 @@
     /* ---------------------------------------------------------------- utils */
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-    const KEY = 'grambandhan.farmer.v1';
+    const KEY = 'GramBondhon.farmer.v1';
     const uid = (p) => p + '-' + Math.random().toString(36).slice(2, 8).toUpperCase();
     const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
         ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -122,7 +122,7 @@
             settings: { dashboard: { ...DEFAULT_DASHBOARD_WIDGETS } },
             notifications: [{
                 id: uid('N'),
-                text: 'Welcome to Grambandhan, ' + user.name.split(' ')[0] + '. Start by listing your first project.',
+                text: 'Welcome to GramBondhon, ' + user.name.split(' ')[0] + '. Start by listing your first project.',
                 type: 'info', at: new Date().toISOString(), read: false
             }]
         };
@@ -1385,7 +1385,7 @@
 
         bindAuth();
         S = load();
-        const isSso = location.search.includes('sso=1') || localStorage.getItem('grambandhan_farmer_sso') === 'true';
+        const isSso = location.search.includes('sso=1') || localStorage.getItem('GramBondhon_farmer_sso') === 'true';
         if (!S || !S.projects || !S.projects.length || !S.wallet || !S.notifications) {
             S = seed({
                 name: (S && S.user && S.user.name) || 'Md. Rafiqul Islam',
@@ -1410,7 +1410,7 @@
             }
         });
         $('#logoutBtn').addEventListener('click', () => {
-            try { localStorage.removeItem('grambandhan_farmer_sso'); } catch (e) { }
+            try { localStorage.removeItem('GramBondhon_farmer_sso'); } catch (e) { }
             $('#app').classList.add('is-hidden');
             $('#authScreen').classList.remove('is-hidden');
             $('#viewLogin').classList.remove('is-hidden');
