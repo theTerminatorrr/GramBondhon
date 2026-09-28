@@ -221,7 +221,7 @@ async function sendActualGmail(record) {
             <div class="header">
               <div class="badge">✓ 100% Shariah Compliant Mudarabah Asset</div>
               <div class="title">Official Investment Share Certificate</div>
-              <div class="subtitle">GramBandhan Rural Agri-FinTech Escrow Collective • Dhaka, Bangladesh</div>
+              <div class="subtitle">GramBondhon Rural Agri-FinTech Escrow Collective • Dhaka, Bangladesh</div>
             </div>
             <div class="content">
               <p>Dear <strong>${record.from}</strong> (NID: 1988269120485921),</p>
@@ -258,7 +258,7 @@ async function sendActualGmail(record) {
               </p>
             </div>
             <div class="footer">
-              © ${new Date().getFullYear()} GramBandhan Rural Agri-FinTech Escrow Collective • Dhaka, Bangladesh
+              © ${new Date().getFullYear()} GramBondhon Rural Agri-FinTech Escrow Collective • Dhaka, Bangladesh
             </div>
           </div>
         </body>
@@ -303,14 +303,14 @@ function dispatchVerificationNotifications(tx, customEmail, customSms) {
     contract: "0x882A973024859a019481920394819284918201A0", // ShariahEscrow
     email: {
       to: email,
-      subject: `[GramBandhan] Blockchain Tx Confirmed: ${tx.id || 'TXN'} (${tx.type || 'Transaction'})`,
+      subject: `[GramBondhon] Blockchain Tx Confirmed: ${tx.id || 'TXN'} (${tx.type || 'Transaction'})`,
       body: `Transaction of ৳${(Number(tx.amount) || 0).toLocaleString()} successfully executed and confirmed on Base Sepolia blockchain.\n\nTransaction ID: ${tx.id || 'TXN'}\nType: ${tx.type || 'Transaction'}\nNetwork: Base Sepolia (84532)\nTx Hash: ${txHash}\nBlock: #${blockNumber}\nFrom: ${tx.from || 'Wallet'} ➔ To: ${tx.to || 'Escrow'}\nTimestamp: ${timestamp}\nBaseScan Explorer: https://sepolia.basescan.org/tx/${txHash}`,
       status: "SENT",
       sentAt: timestamp,
     },
     sms: {
       to: phone,
-      message: `[GramBandhan] Tx Verified! ${tx.type || 'Payment'} of ৳${(Number(tx.amount) || 0).toLocaleString()} confirmed on Base Sepolia. Hash: ${txHash.slice(0, 10)}... Ref: ${tx.id || 'TXN'}. User: ${email}`,
+      message: `[GramBondhon] Tx Verified! ${tx.type || 'Payment'} of ৳${(Number(tx.amount) || 0).toLocaleString()} confirmed on Base Sepolia. Hash: ${txHash.slice(0, 10)}... Ref: ${tx.id || 'TXN'}. User: ${email}`,
       gateway: "GP / Banglalink Telco SMSC Gateway #4402",
       status: "DELIVERED",
       sentAt: timestamp,
