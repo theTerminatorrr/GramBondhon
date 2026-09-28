@@ -1,5 +1,5 @@
 /**
- * GramBandhan Core API & Blockchain Client
+ * GramBondhon Core API & Blockchain Client
  * Connects the frontend to the NestJS / Node backend (http://localhost:3001/api/v1)
  * and Base Sepolia Smart Contract / Double-Entry Ledger services.
  */
@@ -57,7 +57,7 @@ export interface PaymentRecord {
   txHash: string;
 }
 
-export class GramBandhanApiClient {
+export class GramBondhonApiClient {
   private baseUrl: string = 'http://localhost:3001/api/v1';
   private isBackendOnline: boolean = false;
 
@@ -252,4 +252,4 @@ export class GramBandhanApiClient {
   }
 }
 
-export const apiClient = new GramBandhanApiClient();
+export const apiClient = new GramBondhonApiClient();
