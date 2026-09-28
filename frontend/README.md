@@ -1,7 +1,6 @@
-# 🌾 GramBandhan — Frontend, Farmer & Admin Application Hub
-### Official Repository for Jony (`jony_today_25`)
+# 🌾 GramBondhon — Frontend, Farmer & Admin Application Hub
 
-This repository contains the complete **Frontend Web Application, Farmer Portal, and Admin Control Hub** for the GramBandhan Rural Agri-FinTech Platform.
+This repository contains the complete **Frontend Web Application, Farmer Portal, and Admin Control Hub** for the GramBondhon Rural Agri-FinTech Platform.
 
 ---
 
