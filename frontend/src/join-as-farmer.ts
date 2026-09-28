@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * GRAMBONDHON FARMER & PRODUCER CONTROLLER
+ * GramBondhon FARMER & PRODUCER CONTROLLER
  * Feature Domain: Farmer & Women Artisan Portal (Teammate's Workspace)
  * 
  * Separated into this independent module so that the Farmer feature team
@@ -78,11 +78,11 @@ export class JoinAsFarmerController {
     this.btnDemoFarmer?.addEventListener('click', () => {
       authManager.demoLogin('farmer');
       try {
-        localStorage.setItem('grambandhan_farmer_sso', 'true');
-        localStorage.setItem('grambandhan.farmer.v1', JSON.stringify({
+        localStorage.setItem('GramBondhon_farmer_sso', 'true');
+        localStorage.setItem('GramBondhon.farmer.v1', JSON.stringify({
           user: { name: 'Md. Rafiqul Islam', phone: '01712345678', role: 'Farmer', district: 'Bogura', upazila: 'Shibganj' }
         }));
-      } catch (e) {}
+      } catch (e) { }
       this.closePortal();
       this.notifyToast('🌾 Welcome, Md. Rafiqul Islam! Opening Farmer Dashboard...');
       setTimeout(() => {
