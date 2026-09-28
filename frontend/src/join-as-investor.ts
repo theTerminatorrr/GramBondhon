@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * GRAMBONDHON INVESTOR CONTROLLER (Join as Investor & Investor Portal)
+ * GramBondhon INVESTOR CONTROLLER (Join as Investor & Investor Portal)
  * Feature Domain: Investor Registration, Auth & Portfolio Onboarding
  * 
  * Dedicated file for "Join as Investor" workflow, investor verification,
@@ -136,8 +136,8 @@ export class JoinAsInvestorController {
     document.getElementById('btn-quick-demo-farmer')?.addEventListener('click', () => {
       authManager.demoLogin('farmer');
       try {
-        localStorage.setItem('grambandhan_farmer_sso', 'true');
-        localStorage.removeItem('grambandhan.farmer.v1');
+        localStorage.setItem('GramBondhon_farmer_sso', 'true');
+        localStorage.removeItem('GramBondhon.farmer.v1');
       } catch (e) {}
       this.closeAuthModal();
       this.notifyToast('🌾 Logged in as Farmer (Md. Rafiqul Islam)! Opening Farmer Dashboard...');
@@ -165,7 +165,7 @@ export class JoinAsInvestorController {
     this.formSignup?.addEventListener('submit', (e) => {
       e.preventDefault();
       const nameInput = (document.getElementById('signup-name') as HTMLInputElement)?.value.trim() || 'Tanvir Rahman';
-      const idInput = (document.getElementById('signup-identifier') as HTMLInputElement)?.value.trim() || 'tanvir@grambandhan.bd';
+      const idInput = (document.getElementById('signup-identifier') as HTMLInputElement)?.value.trim() || 'tanvir@GramBondhon.bd';
 
       const roles: UserRole[] = [];
       if ((document.getElementById('role-check-farmer') as HTMLInputElement)?.checked) roles.push('farmer');
@@ -185,7 +185,7 @@ export class JoinAsInvestorController {
       if (raw.toLowerCase().includes('farmer') || raw.startsWith('01712345678') || raw.toLowerCase().includes('rafiqul')) {
         authManager.demoLogin('farmer');
         try {
-          localStorage.setItem('grambandhan_farmer_sso', 'true');
+          localStorage.setItem('GramBondhon_farmer_sso', 'true');
         } catch (e) {}
         this.closeAuthModal();
         this.notifyToast('🌾 Logging in as Farmer... Opening Farmer Dashboard!');
@@ -195,7 +195,7 @@ export class JoinAsInvestorController {
         return;
       }
 
-      const email = raw || 'investor@grambandhan.bd';
+      const email = raw || 'investor@GramBondhon.bd';
       const user = authManager.login(email);
       this.handlePostAuthSuccess(user.name);
     });
@@ -256,7 +256,7 @@ export class JoinAsInvestorController {
 
   public handleAdminSingleSignIn(): void {
     try {
-      localStorage.setItem('grambandhan_admin_sso', 'true');
+      localStorage.setItem('GramBondhon_admin_sso', 'true');
     } catch (e) {
       console.warn('Storage error', e);
     }
