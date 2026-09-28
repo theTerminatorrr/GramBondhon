@@ -1,0 +1,2 @@
+# Keep migrations directory tracked in git.
+# Prisma migration folders are generated with `prisma migrate dev`.

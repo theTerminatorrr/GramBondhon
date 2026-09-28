@@ -1,0 +1,1493 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  FARMER
+  INVESTOR
+  ADMIN
+  SUPER_ADMIN
+  FIELD_AGENT
+  BUYER
+}
+
+enum OrderStatus {
+  PLACED
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  BKASH
+  NAGAD
+  BANK_TRANSFER
+  CRYPTO_WALLET
+}
+
+enum InsuranceStatus {
+  ACTIVE
+  CLAIMED
+  EXPIRED
+  CANCELLED
+}
+
+enum ClaimStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  PAID
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum AlertSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum KYCStatus {
+  NOT_STARTED
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum FarmerVerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum FarmStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum ProjectStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+}
+
+enum DealStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  SMART_CONTRACT_CREATED
+  PUBLISHED
+  FUNDING
+  FUNDED
+  ACTIVE
+  HARVESTING
+  REVENUE_VERIFICATION
+  PROFIT_CALCULATION
+  DISTRIBUTION
+  SETTLED
+  CLOSED
+  CANCELLED
+}
+
+enum InvestmentStatus {
+  PENDING
+  CONFIRMED
+  ACTIVE
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum TransactionState {
+  PENDING
+  SUBMITTED
+  CONFIRMED
+  FINALIZED
+  FAILED
+  CANCELLED
+  REFUNDED
+}
+
+enum AccountType {
+  ASSET
+  LIABILITY
+  EQUITY
+  REVENUE
+  EXPENSE
+}
+
+enum ExpenseCategory {
+  SEEDS
+  FERTILIZER
+  PESTICIDE
+  IRRIGATION
+  LABOR
+  EQUIPMENT
+  TRANSPORT
+  STORAGE
+  OTHER
+}
+
+enum NotificationType {
+  INVESTMENT_CONFIRMED
+  PAYMENT_FAILED
+  DEAL_APPROVED
+  FUNDING_COMPLETED
+  HARVEST_RECORDED
+  PROFIT_AVAILABLE
+  PROFIT_DISTRIBUTED
+  WITHDRAWAL_COMPLETED
+  DOCUMENT_UPLOADED
+  SYSTEM
+}
+
+enum BlockchainTxStatus {
+  PENDING
+  SUBMITTED
+  CONFIRMED
+  FAILED
+  REVERTED
+}
+
+enum InvestorType {
+  INDIVIDUAL
+  INSTITUTIONAL
+  CORPORATE
+}
+
+enum DocumentType {
+  LAND_TITLE
+  SURVEY
+  PERMIT
+  PHOTO
+  PLAN
+  BUDGET
+  REPORT
+  RECEIPT
+  INVOICE
+  ID
+  BUSINESS_REGISTRATION
+  OTHER
+}
+
+enum MilestoneStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  VERIFIED
+  FAILED
+}
+
+enum UnitStatus {
+  ACTIVE
+  TRANSFERRED
+  BURNED
+}
+
+enum InvestmentTransactionType {
+  INVEST
+  REFUND
+  CANCEL
+}
+
+enum WalletType {
+  EOA
+  SMART
+}
+
+enum WalletTransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  SEND
+  RECEIVE
+  TRANSFER
+  CONTRACT_CALL
+  GAS_PAYMENT
+}
+
+enum EscrowStatus {
+  ACTIVE
+  LOCKED
+  PARTIALLY_RELEASED
+  FULLY_RELEASED
+  REFUNDED
+  CLOSED
+}
+
+enum EscrowTransactionType {
+  DEPOSIT
+  LOCK
+  RELEASE
+  REFUND
+  FEE
+}
+
+enum RecipientType {
+  INVESTOR
+  FARMER
+  PLATFORM
+}
+
+enum DistributionStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum SettlementType {
+  INVESTOR_RETURN
+  FARMER_PAYOUT
+  PLATFORM_FEE
+  REFUND
+}
+
+enum SettlementStatus {
+  PENDING
+  APPROVED
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum WithdrawalMethod {
+  BANK
+  MOBILE
+  BLOCKCHAIN
+}
+
+enum WithdrawalStatus {
+  PENDING
+  APPROVED
+  PROCESSING
+  COMPLETED
+  FAILED
+  REJECTED
+  CANCELLED
+}
+
+model User {
+  id                        String               @id @default(uuid()) @db.Uuid
+  email                     String               @unique
+  passwordHash              String
+  firstName                 String
+  lastName                  String
+  phone                     String?
+  role                      UserRole
+  isEmailVerified           Boolean              @default(false)
+  isPhoneVerified           Boolean              @default(false)
+  mfaEnabled                Boolean              @default(false)
+  lastLoginAt               DateTime?
+  createdAt                 DateTime             @default(now())
+  updatedAt                 DateTime             @updatedAt
+
+  farmerProfiles            FarmerProfile[]      @relation("FarmerProfileUser")
+  farmerProfilesVerified    FarmerProfile[]      @relation("FarmerProfileVerifiedBy")
+  investorProfiles          InvestorProfile[]    @relation("InvestorProfileUser")
+  investorProfilesKycVerified InvestorProfile[]  @relation("InvestorProfileKycVerifiedBy")
+  wallets                   Wallet[]
+  notifications             Notification[]
+  payments                  Payment[]
+  withdrawals               Withdrawal[]         @relation("WithdrawalUser")
+  withdrawalsApproved       Withdrawal[]         @relation("WithdrawalApprovedBy")
+  auditLogs                 AuditLog[]
+  userRoleAssignments       UserRoleAssignment[]
+  farmsVerified             Farm[]
+  farmDocumentsVerified     FarmDocument[]
+  agriculturalProjectsApproved AgriculturalProject[]
+  expensesApproved          Expense[]
+  harvestsRecorded          Harvest[]            @relation("HarvestRecordedBy")
+  harvestsVerified          Harvest[]            @relation("HarvestVerifiedBy")
+  salesRecorded             Sale[]               @relation("SaleRecordedBy")
+  salesVerified             Sale[]               @relation("SaleVerifiedBy")
+  profitCalculationsCalculated ProfitCalculation[] @relation("ProfitCalcCalculatedBy")
+  profitCalculationsApproved ProfitCalculation[] @relation("ProfitCalcApprovedBy")
+  settlementsToUser         Settlement[]         @relation("SettlementToUser")
+  settlementsApproved       Settlement[]         @relation("SettlementApprovedBy")
+  oracleAttestationsAttested OracleAttestation[] @relation("OracleAttester")
+  oracleAttestationsVerified OracleAttestation[] @relation("OracleVerifiedBy")
+  fieldAgentProfiles        FieldAgentProfile[]  @relation("FieldAgentUser")
+  productListings           ProductListing[]
+  ordersBought              Order[]              @relation("OrderBuyer")
+  ratingsGiven              Rating[]             @relation("RatingAuthor")
+  ratingsReceived           Rating[]             @relation("RatingRecipient")
+  fraudAlerts               FraudAlert[]
+
+  @@index([role])
+  @@index([createdAt])
+  @@map("users")
+}
+
+model Role {
+  id                  String               @id @default(uuid()) @db.Uuid
+  name                String               @unique
+  description         String?
+  createdAt           DateTime             @default(now())
+
+  userRoleAssignments UserRoleAssignment[]
+  rolePermissions     RolePermission[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id              String               @id @default(uuid()) @db.Uuid
+  name            String               @unique
+  description     String?
+  resource        String
+  action          String
+  createdAt       DateTime             @default(now())
+
+  rolePermissions RolePermission[]
+
+  @@unique([resource, action])
+  @@map("permissions")
+}
+
+model RolePermission {
+  id           String     @id @default(uuid()) @db.Uuid
+  roleId       String     @db.Uuid
+  permissionId String     @db.Uuid
+  createdAt    DateTime   @default(now())
+
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@index([permissionId])
+  @@map("role_permissions")
+}
+
+model UserRoleAssignment {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  roleId    String   @db.Uuid
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roleId])
+  @@index([roleId])
+  @@map("user_roles")
+}
+
+model FarmerProfile {
+  id                         String                    @id @default(uuid()) @db.Uuid
+  userId                     String                    @unique @db.Uuid
+  businessName               String?
+  businessRegistrationNumber String?
+  taxId                      String?
+  address                    String?
+  district                   String?
+  division                   String?
+  country                    String?                   @default("Bangladesh")
+  bio                        String?
+  yearsExperience            Int?
+  totalLandAcres             Decimal?                  @db.Decimal(10, 2)
+  verificationStatus         FarmerVerificationStatus  @default(PENDING)
+  verifiedAt                 DateTime?
+  verifiedBy                 String?                   @db.Uuid
+  rejectionReason            String?
+  createdAt                  DateTime                  @default(now())
+  updatedAt                  DateTime                  @updatedAt
+
+  user                       User                      @relation("FarmerProfileUser", fields: [userId], references: [id], onDelete: Restrict)
+  verifiedByUser             User?                     @relation("FarmerProfileVerifiedBy", fields: [verifiedBy], references: [id], onDelete: SetNull)
+  farms                      Farm[]
+  agriculturalProjects      AgriculturalProject[]
+  deals                      Deal[]
+  profitDistributions        ProfitDistribution[]
+
+  @@index([verificationStatus])
+  @@index([verifiedBy])
+  @@map("farmer_profiles")
+}
+
+model InvestorProfile {
+  id                     String        @id @default(uuid()) @db.Uuid
+  userId                 String        @unique @db.Uuid
+  investorType           InvestorType  @default(INDIVIDUAL)
+  companyName            String?
+  companyRegistrationNumber String?
+  taxId                  String?
+  address                String?
+  country                String?       @default("Bangladesh")
+  totalInvestmentCapacity Decimal?     @db.Decimal(19, 4)
+  kycStatus              KYCStatus     @default(NOT_STARTED)
+  kycSubmittedAt         DateTime?
+  kycVerifiedAt          DateTime?
+  kycVerifiedBy          String?       @db.Uuid
+  kycRejectionReason     String?
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+
+  user                   User          @relation("InvestorProfileUser", fields: [userId], references: [id], onDelete: Restrict)
+  kycVerifiedByUser      User?         @relation("InvestorProfileKycVerifiedBy", fields: [kycVerifiedBy], references: [id], onDelete: SetNull)
+  investments            Investment[]
+  dealParticipants       DealParticipant[]
+  profitDistributions    ProfitDistribution[]
+
+  @@index([kycStatus])
+  @@index([investorType])
+  @@map("investor_profiles")
+}
+
+model Farm {
+  id                  String      @id @default(uuid()) @db.Uuid
+  farmerProfileId     String      @db.Uuid
+  name                String
+  description         String?
+  location            String
+  latitude            Decimal?    @db.Decimal(10, 7)
+  longitude           Decimal?    @db.Decimal(10, 7)
+  totalAreaAcres      Decimal     @db.Decimal(10, 2)
+  soilType            String?
+  waterSource         String?
+  status              FarmStatus  @default(ACTIVE)
+  verifiedAt          DateTime?
+  verifiedBy          String?     @db.Uuid
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+
+  farmerProfile       FarmerProfile @relation(fields: [farmerProfileId], references: [id], onDelete: Restrict)
+  verifiedByUser      User?       @relation(fields: [verifiedBy], references: [id], onDelete: SetNull)
+  farmDocuments       FarmDocument[]
+  agriculturalProjects AgriculturalProject[]
+
+  @@index([farmerProfileId])
+  @@index([status])
+  @@index([verifiedBy])
+  @@map("farms")
+}
+
+model FarmDocument {
+  id          String       @id @default(uuid()) @db.Uuid
+  farmId      String       @db.Uuid
+  fileName    String
+  fileUrl     String
+  mimeType    String
+  fileSize    Int
+  documentType DocumentType
+  uploadedAt  DateTime     @default(now())
+  verifiedAt  DateTime?
+  verifiedBy  String?      @db.Uuid
+
+  farm        Farm         @relation(fields: [farmId], references: [id], onDelete: Cascade)
+  verifiedByUser User?     @relation(fields: [verifiedBy], references: [id], onDelete: SetNull)
+
+  @@index([farmId])
+  @@index([documentType])
+  @@map("farm_documents")
+}
+
+model Crop {
+  id                 String @id @default(uuid()) @db.Uuid
+  name               String
+  variety            String?
+  category           String
+  growingSeasonDays  Int
+  description        String?
+  createdAt          DateTime @default(now())
+
+  agriculturalProjects AgriculturalProject[]
+
+  @@unique([name, variety])
+  @@index([category])
+  @@map("crops")
+}
+
+model AgriculturalProject {
+  id                 String        @id @default(uuid()) @db.Uuid
+  farmerProfileId    String        @db.Uuid
+  farmId             String?       @db.Uuid
+  cropId             String?       @db.Uuid
+  name               String
+  description        String?
+  season             String?
+  year               Int?
+  startDate          DateTime?
+  endDate            DateTime?
+  expectedYield      Decimal?      @db.Decimal(19, 4)
+  expectedRevenue    Decimal?      @db.Decimal(19, 4)
+  status             ProjectStatus @default(DRAFT)
+  submittedAt        DateTime?
+  approvedAt         DateTime?
+  approvedBy         String?       @db.Uuid
+  rejectionReason    String?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  farmerProfile      FarmerProfile @relation(fields: [farmerProfileId], references: [id], onDelete: Restrict)
+  farm               Farm?         @relation(fields: [farmId], references: [id], onDelete: SetNull)
+  crop               Crop?         @relation(fields: [cropId], references: [id], onDelete: SetNull)
+  approvedByUser     User?         @relation(fields: [approvedBy], references: [id], onDelete: SetNull)
+  projectDocuments   ProjectDocument[]
+  projectMilestones  ProjectMilestone[]
+  deals              Deal[]
+  expenses           Expense[]
+  harvests           Harvest[]
+  sales              Sale[]
+  revenues           Revenue[]
+  insurancePolicies  InsurancePolicy[]
+  riskScores         RiskScore[]
+  ratings            Rating[]
+
+  @@index([farmerProfileId])
+  @@index([farmId])
+  @@index([cropId])
+  @@index([status])
+  @@map("agricultural_projects")
+}
+
+model ProjectDocument {
+  id          String       @id @default(uuid()) @db.Uuid
+  projectId   String       @db.Uuid
+  fileName    String
+  fileUrl     String
+  mimeType    String
+  fileSize    Int
+  documentType DocumentType
+  description String?
+  uploadedAt  DateTime     @default(now())
+
+  project     AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@map("project_documents")
+}
+
+model ProjectMilestone {
+  id            String          @id @default(uuid()) @db.Uuid
+  projectId     String          @db.Uuid
+  name          String
+  description   String?
+  targetDate    DateTime
+  completedDate DateTime?
+  status        MilestoneStatus @default(PENDING)
+  sortOrder     Int
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  project       AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  verifiedByAgentId String?          @db.Uuid
+  verifiedByAgent   FieldAgentProfile? @relation("MilestoneVerifiedByAgent", fields: [verifiedByAgentId], references: [id], onDelete: SetNull)
+  photoUrls     String[]        @default([])
+  expenseLog    Decimal?        @db.Decimal(19, 4)
+
+  @@index([projectId])
+  @@index([status])
+  @@index([targetDate])
+  @@unique([projectId, sortOrder])
+  @@map("project_milestones")
+}
+
+model Deal {
+  id                   String       @id @default(uuid()) @db.Uuid
+  projectId            String       @db.Uuid
+  farmerProfileId      String       @db.Uuid
+  title                String
+  description          String?
+  status               DealStatus   @default(DRAFT)
+  fundingTarget        Decimal      @db.Decimal(19, 4)
+  minimumInvestment    Decimal      @db.Decimal(19, 4)
+  maximumInvestment    Decimal      @db.Decimal(19, 4)
+  totalInvested        Decimal      @default(0) @db.Decimal(19, 4)
+  investorSharePercent Decimal      @db.Decimal(5, 2)
+  farmerSharePercent   Decimal      @db.Decimal(5, 2)
+  platformFeePercent   Decimal      @db.Decimal(5, 2)
+  investmentUnits      Int
+  unitPrice            Decimal      @db.Decimal(19, 4)
+  durationDays         Int
+  startDate            DateTime?
+  endDate              DateTime?
+  smartContractAddress String?
+  blockchainTxHash     String?
+  publishedAt          DateTime?
+  fundedAt             DateTime?
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  project              AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Restrict)
+  farmerProfile        FarmerProfile @relation(fields: [farmerProfileId], references: [id], onDelete: Restrict)
+  dealTerm             DealTerm?
+  escrowAccount        EscrowAccount?
+  dealParticipants     DealParticipant[]
+  investments          Investment[]
+  profitCalculations   ProfitCalculation[]
+  profitDistributions  ProfitDistribution[]
+  settlements          Settlement[]
+
+  @@index([projectId])
+  @@index([farmerProfileId])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([smartContractAddress])
+  @@map("deals")
+}
+
+model DealTerm {
+  id         String    @id @default(uuid()) @db.Uuid
+  dealId     String    @unique @db.Uuid
+  content    String?
+  version    Int       @default(1)
+  hash       String?
+  acceptedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  deal       Deal      @relation(fields: [dealId], references: [id], onDelete: Cascade)
+
+  @@map("deal_terms")
+}
+
+model DealParticipant {
+  id                String          @id @default(uuid()) @db.Uuid
+  dealId            String          @db.Uuid
+  investorProfileId String          @db.Uuid
+  joinedAt          DateTime        @default(now())
+  createdAt         DateTime        @default(now())
+
+  deal              Deal            @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  investorProfile   InvestorProfile @relation(fields: [investorProfileId], references: [id], onDelete: Restrict)
+
+  @@unique([dealId, investorProfileId])
+  @@index([investorProfileId])
+  @@map("deal_participants")
+}
+
+model Investment {
+  id                String           @id @default(uuid()) @db.Uuid
+  dealId            String           @db.Uuid
+  investorProfileId String           @db.Uuid
+  units             Int
+  amount            Decimal          @db.Decimal(19, 4)
+  unitPrice         Decimal          @db.Decimal(19, 4)
+  status            InvestmentStatus @default(PENDING)
+  idempotencyKey    String           @unique
+  walletAddress     String?
+  blockchainTxHash  String?
+  confirmedAt       DateTime?
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  deal              Deal             @relation(fields: [dealId], references: [id], onDelete: Restrict)
+  investorProfile   InvestorProfile  @relation(fields: [investorProfileId], references: [id], onDelete: Restrict)
+  investmentUnits   InvestmentUnit[]
+  investmentTransactions InvestmentTransaction[]
+  payments          Payment[]
+
+  @@index([dealId])
+  @@index([investorProfileId])
+  @@index([status])
+  @@map("investments")
+}
+
+model InvestmentUnit {
+  id           String    @id @default(uuid()) @db.Uuid
+  investmentId String    @db.Uuid
+  unitNumber   Int
+  status       UnitStatus @default(ACTIVE)
+  ownerAt      DateTime?
+  createdAt    DateTime  @default(now())
+
+  investment   Investment @relation(fields: [investmentId], references: [id], onDelete: Cascade)
+
+  @@unique([investmentId, unitNumber])
+  @@index([status])
+  @@map("investment_units")
+}
+
+model InvestmentTransaction {
+  id               String                   @id @default(uuid()) @db.Uuid
+  investmentId     String                   @db.Uuid
+  type             InvestmentTransactionType
+  amount           Decimal                  @db.Decimal(19, 4)
+  status           TransactionState         @default(PENDING)
+  reference        String?
+  blockchainTxHash String?
+  createdAt        DateTime                 @default(now())
+
+  investment       Investment               @relation(fields: [investmentId], references: [id], onDelete: Cascade)
+
+  @@index([investmentId])
+  @@index([type])
+  @@index([status])
+  @@map("investment_transactions")
+}
+
+model Payment {
+  id               String        @id @default(uuid()) @db.Uuid
+  userId           String        @db.Uuid
+  investmentId     String?       @db.Uuid
+  amount           Decimal       @db.Decimal(19, 4)
+  currency         String        @default("BDT")
+  provider         String
+  providerReference String?
+  status           PaymentStatus @default(PENDING)
+  idempotencyKey   String        @unique
+  metadata         Json?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  user             User          @relation(fields: [userId], references: [id], onDelete: Restrict)
+  investment       Investment?   @relation(fields: [investmentId], references: [id], onDelete: SetNull)
+  paymentAttempts  PaymentAttempt[]
+  paymentWebhooks  PaymentWebhook[]
+  profitDistributions ProfitDistribution[]
+  settlements      Settlement[]
+  withdrawals      Withdrawal[]
+  fraudAlerts      FraudAlert[]
+
+  @@index([userId])
+  @@index([investmentId])
+  @@index([status])
+  @@index([provider])
+  @@map("payments")
+}
+
+model PaymentAttempt {
+  id                String        @id @default(uuid()) @db.Uuid
+  paymentId         String        @db.Uuid
+  provider          String
+  providerReference String?
+  amount            Decimal       @db.Decimal(19, 4)
+  status            PaymentStatus @default(PENDING)
+  errorCode         String?
+  errorMessage      String?
+  rawResponse       Json?
+  createdAt         DateTime      @default(now())
+
+  payment           Payment       @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+
+  @@index([paymentId])
+  @@index([status])
+  @@map("payment_attempts")
+}
+
+model PaymentWebhook {
+  id             String   @id @default(uuid()) @db.Uuid
+  paymentId      String?  @db.Uuid
+  provider       String
+  eventType      String
+  payload        Json
+  processed      Boolean  @default(false)
+  processedAt    DateTime?
+  idempotencyKey String   @unique
+  receivedAt     DateTime @default(now())
+
+  payment        Payment? @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+
+  @@index([paymentId])
+  @@index([processed])
+  @@index([receivedAt])
+  @@map("payment_webhooks")
+}
+
+model Wallet {
+  id            String     @id @default(uuid()) @db.Uuid
+  userId        String     @db.Uuid
+  address       String
+  chainId       Int
+  walletType    WalletType @default(EOA)
+  isPrimary     Boolean    @default(false)
+  label         String?
+  connectedAt   DateTime   @default(now())
+  createdAt     DateTime   @default(now())
+
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  walletTransactions WalletTransaction[]
+
+  @@unique([address, chainId])
+  @@index([userId])
+  @@index([isPrimary])
+  @@map("wallets")
+}
+
+model WalletTransaction {
+  id           String               @id @default(uuid()) @db.Uuid
+  walletId     String               @db.Uuid
+  type         WalletTransactionType
+  amount       Decimal              @db.Decimal(19, 4)
+  tokenAddress String?
+  txHash       String?
+  status       TransactionState     @default(PENDING)
+  blockNumber  BigInt?
+  createdAt    DateTime             @default(now())
+
+  wallet       Wallet               @relation(fields: [walletId], references: [id], onDelete: Cascade)
+
+  @@index([walletId])
+  @@index([type])
+  @@index([status])
+  @@map("wallet_transactions")
+}
+
+model Account {
+  id          String      @id @default(uuid()) @db.Uuid
+  code        String      @unique
+  name        String
+  type        AccountType
+  subtype     String?
+  parentId    String?     @db.Uuid
+  description String?
+  isActive    Boolean     @default(true)
+  metadata    Json?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  parent      Account?    @relation("AccountHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children    Account[]   @relation("AccountHierarchy")
+  ledgerEntries LedgerEntry[]
+
+  @@index([type])
+  @@index([parentId])
+  @@index([isActive])
+  @@map("accounts")
+}
+
+model LedgerEntry {
+  id                 String   @id @default(uuid()) @db.Uuid
+  ledgerTransactionId String  @db.Uuid
+  accountId          String   @db.Uuid
+  debit              Decimal  @default(0) @db.Decimal(19, 4)
+  credit             Decimal  @default(0) @db.Decimal(19, 4)
+  currency           String   @default("BDT")
+  runningBalance     Decimal  @db.Decimal(19, 4)
+  createdAt          DateTime @default(now())
+
+  ledgerTransaction  LedgerTransaction @relation(fields: [ledgerTransactionId], references: [id], onDelete: Restrict)
+  account            Account  @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  expenses           Expense[]
+  revenues           Revenue[]
+
+  @@index([ledgerTransactionId])
+  @@index([accountId])
+  @@map("ledger_entries")
+}
+
+model LedgerTransaction {
+  id              String    @id @default(uuid()) @db.Uuid
+  referenceType   String?
+  referenceId     String?   @db.Uuid
+  description     String?
+  idempotencyKey  String    @unique
+  state           TransactionState @default(PENDING)
+  metadata        Json?
+  createdAt       DateTime  @default(now())
+
+  ledgerEntries   LedgerEntry[]
+
+  @@index([referenceType, referenceId])
+  @@index([state])
+  @@map("ledger_transactions")
+}
+
+model EscrowAccount {
+  id                    String       @id @default(uuid()) @db.Uuid
+  dealId                String       @unique @db.Uuid
+  balance               Decimal      @default(0) @db.Decimal(19, 4)
+  lockedBalance         Decimal      @default(0) @db.Decimal(19, 4)
+  status                EscrowStatus @default(ACTIVE)
+  blockchainContractAddress String?
+  createdAt             DateTime     @default(now())
+  updatedAt             DateTime     @updatedAt
+
+  deal                  Deal         @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  escrowTransactions    EscrowTransaction[]
+
+  @@index([status])
+  @@map("escrow_accounts")
+}
+
+model EscrowTransaction {
+  id               String               @id @default(uuid()) @db.Uuid
+  escrowAccountId  String               @db.Uuid
+  type             EscrowTransactionType
+  amount           Decimal              @db.Decimal(19, 4)
+  fromReference    String?
+  toReference      String?
+  state            TransactionState     @default(PENDING)
+  blockchainTxHash String?
+  createdAt        DateTime             @default(now())
+
+  escrowAccount    EscrowAccount        @relation(fields: [escrowAccountId], references: [id], onDelete: Cascade)
+
+  @@index([escrowAccountId])
+  @@index([type])
+  @@index([state])
+  @@map("escrow_transactions")
+}
+
+model Expense {
+  id            String          @id @default(uuid()) @db.Uuid
+  projectId     String          @db.Uuid
+  category      ExpenseCategory
+  description   String?
+  amount        Decimal         @db.Decimal(19, 4)
+  vendor        String?
+  receiptUrl    String?
+  incurredAt    DateTime
+  approved      Boolean         @default(false)
+  approvedBy    String?         @db.Uuid
+  approvedAt    DateTime?
+  ledgerEntryId String?         @db.Uuid
+  createdAt     DateTime        @default(now())
+
+  project       AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Restrict)
+  approvedByUser User?          @relation(fields: [approvedBy], references: [id], onDelete: SetNull)
+  ledgerEntry   LedgerEntry?    @relation(fields: [ledgerEntryId], references: [id], onDelete: SetNull)
+  expenseDocuments ExpenseDocument[]
+
+  @@index([projectId])
+  @@index([category])
+  @@index([incurredAt])
+  @@index([approved])
+  @@map("expenses")
+}
+
+model ExpenseDocument {
+  id         String   @id @default(uuid()) @db.Uuid
+  expenseId  String   @db.Uuid
+  fileName   String
+  fileUrl    String
+  mimeType   String
+  fileSize   Int
+  uploadedAt DateTime @default(now())
+
+  expense    Expense  @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+
+  @@index([expenseId])
+  @@map("expense_documents")
+}
+
+model Harvest {
+  id                  String              @id @default(uuid()) @db.Uuid
+  projectId           String              @db.Uuid
+  quantity            Decimal             @db.Decimal(19, 4)
+  unit                String              @default("kg")
+  qualityGrade        String?
+  harvestDate         DateTime
+  recordedBy          String              @db.Uuid
+  verified            Boolean             @default(false)
+  verifiedBy          String?             @db.Uuid
+  verifiedAt          DateTime?
+  oracleAttestationId String?             @db.Uuid
+  createdAt           DateTime            @default(now())
+
+  project             AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Restrict)
+  recordedByUser      User                @relation("HarvestRecordedBy", fields: [recordedBy], references: [id], onDelete: Restrict)
+  verifiedByUser      User?               @relation("HarvestVerifiedBy", fields: [verifiedBy], references: [id], onDelete: SetNull)
+  oracleAttestation   OracleAttestation?  @relation(fields: [oracleAttestationId], references: [id], onDelete: SetNull)
+  sales               Sale[]
+
+  @@index([projectId])
+  @@index([harvestDate])
+  @@index([recordedBy])
+  @@map("harvests")
+}
+
+model Sale {
+  id            String              @id @default(uuid()) @db.Uuid
+  projectId     String              @db.Uuid
+  harvestId     String?             @db.Uuid
+  quantity      Decimal             @db.Decimal(19, 4)
+  unit          String              @default("kg")
+  unitPrice     Decimal             @db.Decimal(19, 4)
+  totalAmount   Decimal             @db.Decimal(19, 4)
+  buyerName     String?
+  buyerContact  String?
+  saleDate      DateTime
+  recordedBy    String              @db.Uuid
+  verified      Boolean             @default(false)
+  verifiedBy    String?             @db.Uuid
+  createdAt     DateTime            @default(now())
+
+  project       AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Restrict)
+  harvest       Harvest?            @relation(fields: [harvestId], references: [id], onDelete: SetNull)
+  recordedByUser User               @relation("SaleRecordedBy", fields: [recordedBy], references: [id], onDelete: Restrict)
+  verifiedByUser User?              @relation("SaleVerifiedBy", fields: [verifiedBy], references: [id], onDelete: SetNull)
+  revenues      Revenue[]
+
+  @@index([projectId])
+  @@index([harvestId])
+  @@index([saleDate])
+  @@map("sales")
+}
+
+model Revenue {
+  id            String              @id @default(uuid()) @db.Uuid
+  projectId     String              @db.Uuid
+  saleId        String?             @db.Uuid
+  amount        Decimal             @db.Decimal(19, 4)
+  currency      String              @default("BDT")
+  source        String
+  receivedAt    DateTime
+  ledgerEntryId String?             @db.Uuid
+  createdAt     DateTime            @default(now())
+
+  project       AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Restrict)
+  sale          Sale?               @relation(fields: [saleId], references: [id], onDelete: SetNull)
+  ledgerEntry   LedgerEntry?        @relation(fields: [ledgerEntryId], references: [id], onDelete: SetNull)
+
+  @@index([projectId])
+  @@index([saleId])
+  @@index([receivedAt])
+  @@map("revenues")
+}
+
+model ProfitCalculation {
+  id                   String   @id @default(uuid()) @db.Uuid
+  dealId               String   @db.Uuid
+  totalRevenue         Decimal  @db.Decimal(19, 4)
+  totalExpenses        Decimal  @db.Decimal(19, 4)
+  grossProfit          Decimal  @db.Decimal(19, 4)
+  platformFees         Decimal  @db.Decimal(19, 4)
+  distributableProfit  Decimal  @db.Decimal(19, 4)
+  investorSharePercent Decimal  @db.Decimal(5, 2)
+  farmerSharePercent   Decimal  @db.Decimal(5, 2)
+  investorProfit       Decimal  @db.Decimal(19, 4)
+  farmerProfit         Decimal  @db.Decimal(19, 4)
+  calculatedAt         DateTime @default(now())
+  calculatedBy         String?  @db.Uuid
+  approved             Boolean  @default(false)
+  approvedBy           String?  @db.Uuid
+  approvedAt           DateTime?
+  metadata             Json?
+  createdAt            DateTime @default(now())
+
+  deal                 Deal     @relation(fields: [dealId], references: [id], onDelete: Restrict)
+  calculatedByUser     User?    @relation("ProfitCalcCalculatedBy", fields: [calculatedBy], references: [id], onDelete: SetNull)
+  approvedByUser       User?    @relation("ProfitCalcApprovedBy", fields: [approvedBy], references: [id], onDelete: SetNull)
+  profitDistributions  ProfitDistribution[]
+
+  @@index([dealId])
+  @@index([approved])
+  @@index([calculatedAt])
+  @@map("profit_calculations")
+}
+
+model ProfitDistribution {
+  id                   String               @id @default(uuid()) @db.Uuid
+  profitCalculationId  String               @db.Uuid
+  dealId               String               @db.Uuid
+  investorProfileId    String?              @db.Uuid
+  farmerProfileId      String?              @db.Uuid
+  recipientType        RecipientType
+  amount               Decimal              @db.Decimal(19, 4)
+  percentage           Decimal              @db.Decimal(5, 2)
+  status               DistributionStatus   @default(PENDING)
+  paymentId            String?              @db.Uuid
+  blockchainTxHash     String?
+  distributedAt        DateTime?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+
+  profitCalculation    ProfitCalculation    @relation(fields: [profitCalculationId], references: [id], onDelete: Cascade)
+  deal                 Deal                 @relation(fields: [dealId], references: [id], onDelete: Restrict)
+  investorProfile      InvestorProfile?     @relation(fields: [investorProfileId], references: [id], onDelete: SetNull)
+  farmerProfile        FarmerProfile?       @relation(fields: [farmerProfileId], references: [id], onDelete: SetNull)
+  payment              Payment?             @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+
+  @@index([profitCalculationId])
+  @@index([dealId])
+  @@index([investorProfileId])
+  @@index([farmerProfileId])
+  @@index([recipientType])
+  @@index([status])
+  @@map("profit_distributions")
+}
+
+model Settlement {
+  id               String          @id @default(uuid()) @db.Uuid
+  dealId           String          @db.Uuid
+  type             SettlementType
+  amount           Decimal         @db.Decimal(19, 4)
+  toUserId         String?         @db.Uuid
+  toWalletAddress  String?
+  status           SettlementStatus @default(PENDING)
+  paymentId        String?         @db.Uuid
+  blockchainTxHash String?
+  approvedBy       String?         @db.Uuid
+  approvedAt       DateTime?
+  completedAt      DateTime?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  deal             Deal            @relation(fields: [dealId], references: [id], onDelete: Restrict)
+  toUser           User?           @relation("SettlementToUser", fields: [toUserId], references: [id], onDelete: SetNull)
+  payment          Payment?        @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+  approvedByUser   User?           @relation("SettlementApprovedBy", fields: [approvedBy], references: [id], onDelete: SetNull)
+
+  @@index([dealId])
+  @@index([toUserId])
+  @@index([status])
+  @@index([type])
+  @@map("settlements")
+}
+
+model Withdrawal {
+  id            String           @id @default(uuid()) @db.Uuid
+  userId        String           @db.Uuid
+  amount        Decimal          @db.Decimal(19, 4)
+  currency      String           @default("BDT")
+  method        WithdrawalMethod
+  accountDetails Json
+  status        WithdrawalStatus @default(PENDING)
+  approvedBy    String?          @db.Uuid
+  approvedAt    DateTime?
+  paymentId     String?          @db.Uuid
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  user          User             @relation("WithdrawalUser", fields: [userId], references: [id], onDelete: Restrict)
+  approvedByUser User?           @relation("WithdrawalApprovedBy", fields: [approvedBy], references: [id], onDelete: SetNull)
+  payment       Payment?         @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([status])
+  @@index([method])
+  @@map("withdrawals")
+}
+
+model BlockchainTransaction {
+  id               String             @id @default(uuid()) @db.Uuid
+  txHash           String             @unique
+  chainId          Int
+  fromAddress      String
+  toAddress        String
+  value            Decimal?           @db.Decimal(19, 4)
+  gasUsed          BigInt?
+  gasPrice         BigInt?
+  blockNumber      BigInt?
+  status           BlockchainTxStatus @default(PENDING)
+  confirmationCount Int               @default(0)
+  relatedEntityType String?
+  relatedEntityId  String?            @db.Uuid
+  retryCount       Int                @default(0)
+  lastRetryAt      DateTime?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  @@index([chainId])
+  @@index([status])
+  @@index([blockNumber])
+  @@index([relatedEntityType, relatedEntityId])
+  @@map("blockchain_transactions")
+}
+
+model BlockchainEvent {
+  id               String   @id @default(uuid()) @db.Uuid
+  txHash           String
+  logIndex         Int
+  blockNumber      BigInt
+  contractAddress  String
+  eventName        String
+  eventSignature   String?
+  args             Json
+  relatedEntityType String?
+  relatedEntityId  String?  @db.Uuid
+  processed        Boolean  @default(false)
+  processedAt      DateTime?
+  chainId          Int
+  createdAt        DateTime @default(now())
+
+  @@unique([txHash, logIndex, chainId])
+  @@index([contractAddress])
+  @@index([eventName])
+  @@index([processed])
+  @@map("blockchain_events")
+}
+
+model SmartContract {
+  id                String   @id @default(uuid()) @db.Uuid
+  name              String
+  address           String
+  chainId           Int
+  deploymentTxHash  String?
+  deployerAddress   String
+  version           String?
+  abi               Json
+  isActive          Boolean  @default(true)
+  deployedAt        DateTime @default(now())
+  createdAt         DateTime @default(now())
+
+  @@unique([address, chainId])
+  @@index([name])
+  @@index([isActive])
+  @@map("smart_contracts")
+}
+
+model OracleAttestation {
+  id               String   @id @default(uuid()) @db.Uuid
+  entityType       String
+  entityId         String   @db.Uuid
+  attesterId       String   @db.Uuid
+  dataHash         String
+  data             Json
+  signature        String?
+  verified         Boolean  @default(false)
+  verifiedBy       String?  @db.Uuid
+  verifiedAt       DateTime?
+  blockchainTxHash String?
+  createdAt        DateTime @default(now())
+
+  attester         User     @relation("OracleAttester", fields: [attesterId], references: [id], onDelete: Restrict)
+  verifiedByUser   User?    @relation("OracleVerifiedBy", fields: [verifiedBy], references: [id], onDelete: SetNull)
+  harvests         Harvest[]
+
+  @@index([entityType, entityId])
+  @@index([attesterId])
+  @@index([dataHash])
+  @@index([verified])
+  @@map("oracle_attestations")
+}
+
+model Notification {
+  id        String           @id @default(uuid()) @db.Uuid
+  userId    String           @db.Uuid
+  type      NotificationType
+  title     String
+  message   String
+  data      Json?
+  read      Boolean          @default(false)
+  readAt    DateTime?
+  createdAt DateTime         @default(now())
+
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, read])
+  @@index([type])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+model AuditLog {
+  id               String    @id @default(uuid()) @db.Uuid
+  actorId          String?   @db.Uuid
+  actorEmail       String?
+  actorRole        String?
+  action           String
+  entityType       String
+  entityId         String?   @db.Uuid
+  oldValues        Json?
+  newValues        Json?
+  ipAddress        String?
+  userAgent        String?
+  blockchainTxHash String?
+  createdAt        DateTime  @default(now())
+
+  actor            User?     @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([actorId])
+  @@index([action])
+  @@index([entityType])
+  @@index([entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model IdempotencyKey {
+  key        String   @id
+  response   Json
+  statusCode Int
+  expiresAt  DateTime
+
+  @@index([expiresAt])
+  @@map("idempotency_keys")
+}
+
+// ------------------------------------------------------------
+// SRS Functional Requirement Extension Models
+// ------------------------------------------------------------
+
+model FieldAgentProfile {
+  id                 String             @id @default(uuid()) @db.Uuid
+  userId             String             @db.Uuid
+  assignedRegion     String
+  nationalId         String?
+  rating             Decimal            @default(0.0) @db.Decimal(3, 2)
+  isVerified         Boolean            @default(false)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  user               User               @relation("FieldAgentUser", fields: [userId], references: [id], onDelete: Cascade)
+  verifiedMilestones ProjectMilestone[] @relation("MilestoneVerifiedByAgent")
+
+  @@index([userId])
+  @@index([assignedRegion])
+  @@map("field_agent_profiles")
+}
+
+model ProductListing {
+  id            String          @id @default(uuid()) @db.Uuid
+  producerId    String          @db.Uuid
+  name          String          @db.VarChar(150)
+  category      String?         @db.VarChar(100)
+  price         Decimal         @db.Decimal(12, 2)
+  quantity      Int             @default(0)
+  unit          String          @default("kg") @db.VarChar(30)
+  description   String?
+  deliveryArea  String?         @db.VarChar(150)
+  imageUrl      String?
+  isAvailable   Boolean         @default(true)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  producer      User            @relation(fields: [producerId], references: [id], onDelete: Cascade)
+  orders        Order[]
+  ratings       Rating[]
+
+  @@index([producerId])
+  @@index([category])
+  @@map("product_listings")
+}
+
+model Order {
+  id              String         @id @default(uuid()) @db.Uuid
+  buyerId         String         @db.Uuid
+  listingId       String         @db.Uuid
+  quantity        Int
+  totalPrice      Decimal        @db.Decimal(12, 2)
+  status          OrderStatus    @default(PLACED)
+  paymentMethod   PaymentMethod?
+  deliveryAddress String?
+  orderedAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  buyer           User           @relation("OrderBuyer", fields: [buyerId], references: [id], onDelete: Restrict)
+  listing         ProductListing @relation(fields: [listingId], references: [id], onDelete: Restrict)
+
+  @@index([buyerId])
+  @@index([listingId])
+  @@index([status])
+  @@map("orders")
+}
+
+model InsurancePolicy {
+  id             String              @id @default(uuid()) @db.Uuid
+  projectId      String              @db.Uuid
+  provider       String              @db.VarChar(150)
+  coverageType   String              @db.VarChar(100)
+  coverageAmount Decimal             @db.Decimal(14, 2)
+  premiumAmount  Decimal             @db.Decimal(12, 2)
+  status         InsuranceStatus     @default(ACTIVE)
+  startedAt      DateTime            @default(now())
+  expiresAt      DateTime?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  project        AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  claims         InsuranceClaim[]
+
+  @@index([projectId])
+  @@index([status])
+  @@map("insurance_policies")
+}
+
+model InsuranceClaim {
+  id               String          @id @default(uuid()) @db.Uuid
+  policyId         String          @db.Uuid
+  reason           String
+  damageAssessment String?
+  claimAmount      Decimal         @db.Decimal(14, 2)
+  approvedAmount   Decimal?        @db.Decimal(14, 2)
+  evidenceUrls     String[]        @default([])
+  status           ClaimStatus     @default(SUBMITTED)
+  filedAt          DateTime        @default(now())
+  settledAt        DateTime?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  policy           InsurancePolicy @relation(fields: [policyId], references: [id], onDelete: Cascade)
+
+  @@index([policyId])
+  @@index([status])
+  @@map("insurance_claims")
+}
+
+model RiskScore {
+  id             String              @id @default(uuid()) @db.Uuid
+  projectId      String              @db.Uuid
+  score          Decimal             @db.Decimal(5, 2)
+  level          RiskLevel
+  factors        String?
+  recommendation String?
+  generatedAt    DateTime            @default(now())
+
+  project        AgriculturalProject @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([level])
+  @@map("risk_scores")
+}
+
+model FraudAlert {
+  id             String          @id @default(uuid()) @db.Uuid
+  userId         String?         @db.Uuid
+  transactionId  String?         @db.Uuid
+  reason         String
+  severity       AlertSeverity   @default(MEDIUM)
+  isResolved     Boolean         @default(false)
+  flaggedAt      DateTime        @default(now())
+  resolvedAt     DateTime?
+
+  user           User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  transaction    Payment?        @relation(fields: [transactionId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([isResolved])
+  @@map("fraud_alerts")
+}
+
+model Rating {
+  id          String               @id @default(uuid()) @db.Uuid
+  fromUserId  String               @db.Uuid
+  toUserId    String?              @db.Uuid
+  projectId   String?              @db.Uuid
+  listingId   String?              @db.Uuid
+  stars       Int                  @db.SmallInt
+  comment     String?
+  createdAt   DateTime             @default(now())
+
+  author      User                 @relation("RatingAuthor", fields: [fromUserId], references: [id], onDelete: Cascade)
+  recipient   User?                @relation("RatingRecipient", fields: [toUserId], references: [id], onDelete: SetNull)
+  project     AgriculturalProject? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  listing     ProductListing?      @relation(fields: [listingId], references: [id], onDelete: SetNull)
+
+  @@index([fromUserId])
+  @@index([toUserId])
+  @@index([projectId])
+  @@index([listingId])
+  @@map("ratings")
+}
