@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * GRAMBONDHON AI CHATBOT (বন্ধন এআই)
+ * GramBondhon AI CHATBOT (বন্ধন এআই)
  * Imported from https://github.com/muhtasim-cs/jony_gm.new
  * Features:
  *  - 💰 Invest in verified cohorts with interactive cards
@@ -332,7 +332,7 @@ export class BondhonChatbot {
     const hour = new Date().getHours();
     const greet = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
     this.botMessage(
-      `${greet}! 👋 I'm <strong>Bondhon AI</strong>, your personal investment assistant for GramBandhan.<br><br>` +
+      `${greet}! 👋 I'm <strong>Bondhon AI</strong>, your personal investment assistant for GramBondhon.<br><br>` +
       `I can help you <strong>invest in halal agriculture</strong>, <strong>monitor cohorts</strong>, <strong>simulate payments</strong>, and <strong>connect with investors</strong>. What would you like to do?`
     );
     this.showQuickReplies(this.quickReplies.main);
@@ -518,14 +518,14 @@ export class BondhonChatbot {
 
       case 'find_investors':
         this.state.step = 'idle';
-        this.botMessage('Here are <strong>verified ethical investors</strong> currently active on GramBandhan. You can send them a direct connection request 🤝');
+        this.botMessage('Here are <strong>verified ethical investors</strong> currently active on GramBondhon. You can send them a direct connection request 🤝');
         setTimeout(() => this.showInvestorCards(this.investors), 600);
         break;
 
       case 'women':
         this.state.step = 'idle';
         this.botMessage(
-          `🌸 <strong>GramBandhan Women Empowerment Program</strong><br><br>` +
+          `🌸 <strong>GramBondhon Women Empowerment Program</strong><br><br>` +
           `Our program directly empowers female farmers and rural artisans across Rangpur, Jamalpur, and Rajshahi:<br><br>` +
           `• Average household income growth: <strong>214%</strong><br>` +
           `• Total ethical capital deployed: <strong>৳3.2 Crore</strong><br>` +
@@ -552,25 +552,25 @@ export class BondhonChatbot {
         apiClient.getBlockchainStatus().then((bc) => {
           this.botMessage(
             `🔗 <strong>Base Sepolia Blockchain Ledger</strong><br><br>` +
-            `Every investment contract and milestone payout on GramBandhan is cryptographically hashed and minted on-chain for tamper-proof accountability.<br><br>` +
+            `Every investment contract and milestone payout on GramBondhon is cryptographically hashed and minted on-chain for tamper-proof accountability.<br><br>` +
             `<div class="gb-blockchain-card">` +
-              `<div class="bc-title">⛓️ Smart Contract: ${bc.verifiedContracts[0]?.name || 'AgriPlatform'}</div>` +
-              `<div class="bc-row"><span>Network:</span><span class="bc-val">${bc.network} (Chain ID ${bc.chainId})</span></div>` +
-              `<div class="bc-row"><span>Contract:</span><span class="bc-val">${bc.contractAddress}</span></div>` +
-              `<div class="bc-row"><span>Latest Block:</span><span class="bc-val">#${bc.blockNumber}</span></div>` +
-              `<div class="bc-row"><span>Contracts:</span><span class="bc-val">${bc.verifiedContracts.map(c => c.name).join(', ')}</span></div>` +
-              `<div class="bc-row"><span>Status:</span><span class="bc-val" style="color:#34D399">VERIFIED ✓ (Online)</span></div>` +
+            `<div class="bc-title">⛓️ Smart Contract: ${bc.verifiedContracts[0]?.name || 'AgriPlatform'}</div>` +
+            `<div class="bc-row"><span>Network:</span><span class="bc-val">${bc.network} (Chain ID ${bc.chainId})</span></div>` +
+            `<div class="bc-row"><span>Contract:</span><span class="bc-val">${bc.contractAddress}</span></div>` +
+            `<div class="bc-row"><span>Latest Block:</span><span class="bc-val">#${bc.blockNumber}</span></div>` +
+            `<div class="bc-row"><span>Contracts:</span><span class="bc-val">${bc.verifiedContracts.map(c => c.name).join(', ')}</span></div>` +
+            `<div class="bc-row"><span>Status:</span><span class="bc-val" style="color:#34D399">VERIFIED ✓ (Online)</span></div>` +
             `</div>`
           );
         }).catch(() => {
           this.botMessage(
             `🔗 <strong>Base Sepolia Blockchain Ledger</strong><br><br>` +
-            `Every investment contract and milestone payout on GramBandhan is cryptographically hashed and minted on-chain for tamper-proof accountability.<br><br>` +
+            `Every investment contract and milestone payout on GramBondhon is cryptographically hashed and minted on-chain for tamper-proof accountability.<br><br>` +
             `<div class="gb-blockchain-card">` +
-              `<div class="bc-title">⛓️ Smart Contract: AgriPlatform</div>` +
-              `<div class="bc-row"><span>Network:</span><span class="bc-val">Base Sepolia (EVM 84532)</span></div>` +
-              `<div class="bc-row"><span>Contract:</span><span class="bc-val">0x9048...d29F</span></div>` +
-              `<div class="bc-row"><span>Status:</span><span class="bc-val" style="color:#34D399">VERIFIED ✓</span></div>` +
+            `<div class="bc-title">⛓️ Smart Contract: AgriPlatform</div>` +
+            `<div class="bc-row"><span>Network:</span><span class="bc-val">Base Sepolia (EVM 84532)</span></div>` +
+            `<div class="bc-row"><span>Contract:</span><span class="bc-val">0x9048...d29F</span></div>` +
+            `<div class="bc-row"><span>Status:</span><span class="bc-val" style="color:#34D399">VERIFIED ✓</span></div>` +
             `</div>`
           );
         });
@@ -609,8 +609,8 @@ export class BondhonChatbot {
           action === '__pay_bkash__'
             ? 'bKash'
             : action === '__pay_nagad__'
-            ? 'Nagad'
-            : 'Bank Transfer';
+              ? 'Nagad'
+              : 'Bank Transfer';
         const p2 = this.state.paymentPending;
         if (p2) {
           const txId = 'GB' + Date.now().toString().slice(-8).toUpperCase();
@@ -637,11 +637,11 @@ export class BondhonChatbot {
             `🌾 <strong>Cohort:</strong> ${p2.project.name}<br><br>` +
             instructions + `<br>` +
             `<div class="gb-blockchain-card">` +
-              `<div class="bc-title">⛓️ Blockchain Verification Proof</div>` +
-              `<div class="bc-row"><span>Network:</span><span class="bc-val">Base Sepolia</span></div>` +
-              `<div class="bc-row"><span>Tx Hash:</span><span class="bc-val">${txHash.slice(0, 16)}...</span></div>` +
-              `<div class="bc-row"><span>Block:</span><span class="bc-val">#${blockNumber}</span></div>` +
-              `<div class="bc-row"><span>Status:</span><span class="bc-val" style="color:#34D399">CONFIRMED (12 Block Confirmations)</span></div>` +
+            `<div class="bc-title">⛓️ Blockchain Verification Proof</div>` +
+            `<div class="bc-row"><span>Network:</span><span class="bc-val">Base Sepolia</span></div>` +
+            `<div class="bc-row"><span>Tx Hash:</span><span class="bc-val">${txHash.slice(0, 16)}...</span></div>` +
+            `<div class="bc-row"><span>Block:</span><span class="bc-val">#${blockNumber}</span></div>` +
+            `<div class="bc-row"><span>Status:</span><span class="bc-val" style="color:#34D399">CONFIRMED (12 Block Confirmations)</span></div>` +
             `</div><br>` +
             `📊 Your investment certificate and live plot telemetry will be visible in your dashboard once processed.`
           );
@@ -748,7 +748,7 @@ export class BondhonChatbot {
       this.botMessage("You're most welcome! 🙏 May your investments bring barakah. Is there anything else I can help with?");
       this.showQuickReplies(this.quickReplies.main);
     } else {
-      this.botMessage("I'm here to help with all GramBandhan projects, payments, and halal investments! Please choose an option below or ask any specific question:");
+      this.botMessage("I'm here to help with all GramBondhon projects, payments, and halal investments! Please choose an option below or ask any specific question:");
       this.showQuickReplies(this.quickReplies.main);
     }
   }
