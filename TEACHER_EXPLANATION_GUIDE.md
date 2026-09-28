@@ -1,4 +1,4 @@
-# 🌾 GramBandhan (গ্রামীণ বন্ধন) - Project & Teacher Explanation Guide
+# 🌾 GramBondhon (গ্রামীণ বন্ধন) - Project & Teacher Explanation Guide
 **Student Name / Module Owner**: Tasfi  
 **Assigned Scope**: Homepage, Hero Section, Marketplace, and Investor Ecosystem (Dashboard, Projects, Financials, AI Risk, Profile)
 
@@ -6,7 +6,7 @@
 
 ## 1. Project Overview & Architecture
 
-**GramBandhan (গ্রামীণ বন্ধন)** is an ethical FinTech and rural commerce platform connecting global conscious investors with local agricultural collectives and village women artisans across Bangladesh under fair Shariah-compliant **Mudarabah** profit sharing.
+**GramBondhon (গ্রামীণ বন্ধন)** is an ethical FinTech and rural commerce platform connecting global conscious investors with local agricultural collectives and village women artisans across Bangladesh under fair Shariah-compliant **Mudarabah** profit sharing.
 
 ### 🔄 Core Ecosystem Flow:
 $$\text{INVESTORS} \xrightarrow{\text{Mudarabah Capital}} \text{RURAL PRODUCERS} \xrightarrow{\text{Harvest \& Production}} \text{MARKETPLACE} \xrightarrow{\text{Wholesale \& Retail}} \text{ETHICAL PROFIT SHARE}$$
@@ -25,7 +25,7 @@ Every file in this project is divided by feature with **zero redundancy**, makin
 
 | File Name | Purpose & Role | Key Things to Tell Your Teacher |
 | :--- | :--- | :--- |
-| **`homepage.html`** / **`index.html`** | **Main Homepage** | Titled *"GramBandhan - Homepage"*. Contains the **Hero Section** (continuous 2.0s agricultural slideshow & direct text overlay), Halal Spotlight, Active Projects preview, Dual-Track "How It Works" guide, and Marketplace highlights. |
+| **`homepage.html`** / **`index.html`** | **Main Homepage** | Titled *"GramBondhon - Homepage"*. Contains the **Hero Section** (continuous 2.0s agricultural slideshow & direct text overlay), Halal Spotlight, Active Projects preview, Dual-Track "How It Works" guide, and Marketplace highlights. |
 | **`investor_marketplace.html`** | **Investor Dashboard Marketplace** | Directly opens the Investor Dashboard on the **Marketplace** tab. Displays rural handicraft investments, bulk purchase contracts, and village producer listings. |
 | **`investor_dashboard.html`** | **Investor Dashboard Overview** | Directly opens the Investor Dashboard on the **Dashboard** overview. Features the dark green sidebar (`#02221A`), 4 square stat boxes (Total Balance ৳ 4,85,000, Total Profit ৳ 84,250), and live field activity feeds. |
 | **`investor_projects.html`** | **Investor Projects Directory** | Directly opens the Investor Dashboard on the **Projects** tab. Showcases 30 verified projects with bilingual Mudarabah return cards (`৩৫% বিনিয়োগকারীর সরাসরি মুনাফা`) and the interactive Investment Return Calculator. |
@@ -82,11 +82,11 @@ Every file in this project is divided by feature with **zero redundancy**, makin
 ## 3. Key Design Improvements Explained for Evaluators
 
 ### A. Titled Homepage & Hero Section
-- **Page Title**: Formally titled `<title>GramBandhan - Homepage</title>`.
+- **Page Title**: Formally titled `<title>GramBondhon - Homepage</title>`.
 - **Hero Section**: Explicitly demarcated with semantic attributes (`id="hero-slideshow" data-section-name="Hero Section"`). Features authentic Bangladesh scenes (rice planting, mustard fields, tea terraces) cycling continuously every 2.0 seconds with hardware-accelerated crossfades.
 
 ### B. Marketplace Brand Header Contrast (Pure White `#FFFFFF`)
-- The `GramBandhan` brand text in the top navigation of the Marketplace has been upgraded from dark green to **pure white (`#FFFFFF`)**.
+- The `GramBondhon` brand text in the top navigation of the Marketplace has been upgraded from dark green to **pure white (`#FFFFFF`)**.
 - The SVG leaf stroke was also updated to white, ensuring crisp, high-contrast visibility against the dark forest green `#0D382A` top bar.
 
 ### C. Redesigned Compact Capital Outflow & Return Inflow Ledger
