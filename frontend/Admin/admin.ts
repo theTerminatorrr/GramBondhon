@@ -4,7 +4,7 @@
 
     const $: any = (s: string, r: any = document) => r.querySelector(s);
     const $$: any = (s: string, r: any = document) => Array.from(r.querySelectorAll(s));
-    const KEY = 'grambandhan.admin.v1';
+    const KEY = 'GramBondhon.admin.v1';
     const uid = (p: string) => p + '-' + Math.random().toString(36).slice(2, 7).toUpperCase();
     const esc = (s: any) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
         ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -1947,7 +1947,7 @@
             const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'grambandhan-' + kind + '-' + new Date().toISOString().slice(0, 10) + '.csv';
+            a.download = 'GramBondhon-' + kind + '-' + new Date().toISOString().slice(0, 10) + '.csv';
             document.body.appendChild(a); a.click(); a.remove();
             setTimeout(() => URL.revokeObjectURL(url), 1000);
             toast(kind + ' report downloaded.');
@@ -2000,7 +2000,7 @@
             save(); paintBell(); paintBadges(); toast('Alerts marked as read.');
         });
         $('#logoutBtn').addEventListener('click', () => {
-            try { localStorage.removeItem('grambandhan_admin_sso'); } catch (e) { }
+            try { localStorage.removeItem('GramBondhon_admin_sso'); } catch (e) { }
             $('#app').classList.add('is-hidden');
             $('#authScreen').classList.remove('is-hidden');
             $('#adOtp').value = '';
@@ -2015,7 +2015,7 @@
         });
         window.addEventListener('hashchange', () => { if (S) route(); });
 
-        const isSso = location.search.includes('sso=1') || localStorage.getItem('grambandhan_admin_sso') === 'true';
+        const isSso = location.search.includes('sso=1') || localStorage.getItem('GramBondhon_admin_sso') === 'true';
         if (isSso || (S && S.admin)) {
             enterApp();
         }
