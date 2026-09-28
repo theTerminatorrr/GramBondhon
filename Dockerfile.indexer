@@ -1,0 +1,42 @@
+# ==============================================================================
+# Multi-stage Dockerfile for GramBondhon Rust Indexer (gram-indexer)
+# ==============================================================================
+
+FROM rust:1.80-alpine AS builder
+
+# Install build essentials for musl target
+RUN apk add --no-cache musl-dev pkgconfig openssl-dev openssl-libs-static
+
+WORKDIR /app
+
+# Copy root and crate manifests for dependency layer caching
+COPY Cargo.toml ./
+COPY crates/gram-indexer/Cargo.toml ./crates/gram-indexer/
+
+# Create a stub main to pre-compile and cache dependencies
+RUN mkdir -p crates/gram-indexer/src && \
+    echo "fn main() {}" > crates/gram-indexer/src/main.rs && \
+    cargo build --release --workspace || true && \
+    rm -rf crates/gram-indexer/src
+
+# Copy actual source code
+COPY crates/gram-indexer/src ./crates/gram-indexer/src
+
+# Build the release binary
+RUN touch crates/gram-indexer/src/main.rs && \
+    cargo build --release -p gram-indexer
+
+# ==============================================================================
+# Final Minimal Runtime Stage (~20MB)
+# ==============================================================================
+FROM alpine:3.20 AS runner
+
+RUN apk add --no-cache ca-certificates libgcc
+
+WORKDIR /app
+
+COPY --from=builder /app/target/release/gram-indexer /usr/local/bin/gram-indexer
+
+ENV RUST_LOG="info,gram_indexer=debug"
+
+ENTRYPOINT ["/usr/local/bin/gram-indexer"]

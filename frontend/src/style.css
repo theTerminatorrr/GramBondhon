@@ -1,0 +1,25 @@
+/**
+ * =========================================================================
+ * GRAMBONDHON (গ্রামীণ বন্ধন) - MODULAR ARCHITECTURE STYLESHEET
+ * 
+ * Every sector has its own self-explanatory stylesheet:
+ * - base.css: Shared design tokens, navbar, footer, typography
+ * - hero-section.css: Hero slideshow, headline, live chat
+ * - join-as-investor.css: Investor registration, onboarding & portal
+ * - active-projects.css: 30 verified projects grid, return indicators
+ * - marketplace.css: Rural handicrafts, product cards & cart drawer
+ * - join-as-farmer.css: Farmer & Women Artisan registration & dashboard
+ * =========================================================================
+ */
+
+@import './styles/base.css';
+@import './styles/hero-section.css';
+@import './styles/join-as-investor.css';
+@import './styles/active-projects.css';
+@import './styles/marketplace.css';
+@import './styles/join-as-farmer.css';
+@import './styles/investor-portal.css';
+@import './styles/faq.css';
+@import './styles/gnss-map.css';
+@import './styles/chatbot.css';
+@import 'leaflet/dist/leaflet.css';

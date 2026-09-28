@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grambondhon — Farmer Portal</title>
+    <meta name="description"
+        content="Farmer module of Grambandhan, a smart rural investment platform: project listing, funding, progress tracking, marketplace and payments.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="farmer.css">
+
+</head>
+
+<body>
+    <div id="authScreen" class="auth">
+        <aside class="auth__brand">
+            <div class="brand">
+                <span class="brand__mark" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" width="28" height="28">
+                        <path d="M16 29c0-8 4-13 11-15-1 9-5 14-11 15Z" fill="#6FBF73" />
+                        <path d="M16 29C16 20 12 15 5 13c1 9 5 14 11 16Z" fill="#2F8B4E" />
+                        <path d="M16 29V9" stroke="#E0A32E" stroke-width="2.5" stroke-linecap="round" />
+                        <circle cx="16" cy="6" r="3.2" fill="#E0A32E" />
+                    </svg>
+                </span>
+                <span class="brand__name">Grambandhan</span>
+            </div>
+            <h1 class="auth__headline">Your field is worth<br>investing in.</h1>
+            <p class="auth__sub">List a project, get funded by verified investors, show your progress, and sell straight
+                to
+                buyers — no middleman, no interest.</p>
+            <dl class="auth__stats">
+                <div>
+                    <dt>Farmers funded</dt>
+                    <dd>12,400+</dd>
+                </div>
+                <div>
+                    <dt>Capital deployed</dt>
+                    <dd>৳4.2 crore</dd>
+                </div>
+                <div>
+                    <dt>Avg. approval</dt>
+                    <dd>48 hours</dd>
+                </div>
+            </dl>
+            <p class="auth__seal">Interest-free · profit-shared · field-verified</p>
+        </aside>
+
+        <main class="auth__panel">
+            <!-- Login -->
+            <section class="card auth__card" id="viewLogin">
+                <h2 class="h2">Welcome back</h2>
+                <p class="muted">স্বাগতম — Sign in to your farmer account.</p>
+                <form id="loginForm" novalidate>
+                    <label class="field">
+                        <span class="field__label">Phone number <em>মোবাইল নম্বর</em></span>
+                        <input type="tel" id="loginPhone" placeholder="01XXXXXXXXX" autocomplete="tel" required>
+                        <span class="field__error" data-for="loginPhone"></span>
+                    </label>
+                    <label class="field">
+                        <span class="field__label">Password <em>পাসওয়ার্ড</em></span>
+                        <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"
+                            required>
+                        <span class="field__error" data-for="loginPass"></span>
+                    </label>
+                    <button class="btn btn--primary btn--block" type="submit">Sign in</button>
+                </form>
+                <p class="auth__switch">New here? <button class="link" data-goauth="signup">Create a farmer
+                        account</button></p>
+                <p class="hint">Demo build — any 11-digit number and a 4+ character password signs you in as the sample
+                    farmer.
+                </p>
+            </section>
+
+            <!-- Registration wizard -->
+            <section class="card auth__card is-hidden" id="viewSignup">
+                <ol class="steps" id="regSteps">
+                    <li class="steps__item is-active" data-step="1"><span>1</span>Account</li>
+                    <li class="steps__item" data-step="2"><span>2</span>Farm profile</li>
+                    <li class="steps__item" data-step="3"><span>3</span>NID check</li>
+                </ol>
+
+                <form id="regForm" novalidate>
+                    <fieldset class="regstep is-active" data-step="1">
+                        <legend class="h2">Create your account</legend>
+                        <label class="field"><span class="field__label">Full name <em>পূর্ণ নাম</em></span>
+                            <input id="regName" placeholder="e.g. Rahima Khatun" required>
+                            <span class="field__error" data-for="regName"></span></label>
+                        <label class="field"><span class="field__label">Phone number <em>মোবাইল নম্বর</em></span>
+                            <input id="regPhone" type="tel" placeholder="01XXXXXXXXX" required>
+                            <span class="field__error" data-for="regPhone"></span></label>
+                        <label class="field"><span class="field__label">Email <em>(optional)</em></span>
+                            <input id="regEmail" type="email" placeholder="you@example.com">
+                            <span class="field__error" data-for="regEmail"></span></label>
+                        <label class="field"><span class="field__label">Password <em>পাসওয়ার্ড</em></span>
+                            <input id="regPass" type="password" placeholder="At least 6 characters" required>
+                            <span class="field__error" data-for="regPass"></span></label>
+                        <div class="field">
+                            <span class="field__label">I am joining as</span>
+                            <div class="roles">
+                                <label class="role is-selected"><input type="radio" name="role" value="Farmer"
+                                        checked><b>Farmer</b><i>কৃষক — crops, poultry, fish, cattle</i></label>
+                                <label class="role"><input type="radio" name="role"
+                                        value="Artisan"><b>Artisan</b><i>কারুশিল্পী —
+                                        handicraft &amp; small business</i></label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="regstep" data-step="2">
+                        <legend class="h2">Tell us about your farm</legend>
+                        <div class="grid2">
+                            <label class="field"><span class="field__label">District <em>জেলা</em></span>
+                                <select id="regDistrict" required></select>
+                                <span class="field__error" data-for="regDistrict"></span></label>
+                            <label class="field"><span class="field__label">Upazila <em>উপজেলা</em></span>
+                                <input id="regUpazila" placeholder="e.g. Shibganj" required>
+                                <span class="field__error" data-for="regUpazila"></span></label>
+                        </div>
+                        <div class="grid2">
+                            <label class="field"><span class="field__label">Land size (decimal)</span>
+                                <input id="regLand" type="number" min="0" step="1" placeholder="e.g. 120">
+                                <span class="field__error" data-for="regLand"></span></label>
+                            <label class="field"><span class="field__label">Years of experience</span>
+                                <input id="regExp" type="number" min="0" max="70" step="1"
+                                    placeholder="e.g. 12"></label>
+                        </div>
+                        <label class="field"><span class="field__label">What do you produce? <em>একাধিক নির্বাচন করা
+                                    যাবে</em></span>
+                            <div class="chips" id="regCrops">
+                                <label class="chip"><input type="checkbox" value="Rice">Rice</label>
+                                <label class="chip"><input type="checkbox" value="Vegetables">Vegetables</label>
+                                <label class="chip"><input type="checkbox" value="Jute">Jute</label>
+                                <label class="chip"><input type="checkbox" value="Poultry">Poultry</label>
+                                <label class="chip"><input type="checkbox" value="Fisheries">Fisheries</label>
+                                <label class="chip"><input type="checkbox" value="Cattle">Cattle</label>
+                                <label class="chip"><input type="checkbox" value="Handicraft">Handicraft</label>
+                            </div>
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="regstep" data-step="3">
+                        <legend class="h2">Verify your identity</legend>
+                        <p class="muted">Investors only fund verified farmers. Your NID is checked against the national
+                            database and
+                            never shown publicly.</p>
+                        <label class="field"><span class="field__label">NID number <em>জাতীয় পরিচয়পত্র
+                                    নম্বর</em></span>
+                            <input id="regNid" inputmode="numeric" placeholder="10, 13 or 17 digits" required>
+                            <span class="field__error" data-for="regNid"></span></label>
+                        <div class="field">
+                            <span class="field__label">Upload NID photo <em>ছবি আপলোড</em></span>
+                            <label class="drop" for="regNidFile">
+                                <input type="file" id="regNidFile" accept="image/*" hidden>
+                                <b id="regNidFileName">Tap to attach a photo</b>
+                                <i>JPG or PNG, front side, all four corners visible</i>
+                            </label>
+                        </div>
+                        <label class="check"><input type="checkbox" id="regTerms" required>
+                            <span>I confirm the information is correct and accept the platform terms and profit-sharing
+                                rules.</span></label>
+                        <span class="field__error" data-for="regTerms"></span>
+                    </fieldset>
+
+                    <div class="auth__actions">
+                        <button class="btn btn--ghost is-hidden" type="button" id="regBack">Back</button>
+                        <button class="btn btn--primary" type="button" id="regNext">Continue</button>
+                        <button class="btn btn--primary is-hidden" type="submit" id="regSubmit">Verify &amp; create
+                            account</button>
+                    </div>
+                </form>
+                <p class="auth__switch">Already registered? <button class="link" data-goauth="login">Sign in</button>
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- ============================================================
+     APP SHELL
+     ============================================================ -->
+    <div id="app" class="app is-hidden">
+        <a class="skip" href="#main">Skip to content</a>
+
+        <aside class="rail" id="rail">
+            <div class="rail__brand">
+                <span class="brand__mark" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" width="24" height="24">
+                        <path d="M16 29c0-8 4-13 11-15-1 9-5 14-11 15Z" fill="#6FBF73" />
+                        <path d="M16 29C16 20 12 15 5 13c1 9 5 14 11 16Z" fill="#2F8B4E" />
+                        <path d="M16 29V9" stroke="#E0A32E" stroke-width="2.5" stroke-linecap="round" />
+                        <circle cx="16" cy="6" r="3.2" fill="#E0A32E" />
+                    </svg>
+                </span>
+                <span>Grambandhan</span>
+            </div>
+            <nav class="rail__nav" aria-label="Farmer sections">
+                <a href="#/dashboard" data-nav="dashboard">Dashboard <em>ড্যাশবোর্ড</em></a>
+                <a href="#/projects" data-nav="projects">My projects <em>আমার প্রকল্প</em></a>
+                <a href="#/market" data-nav="market">Marketplace <em>বাজার</em></a>
+                <a href="#/wallet" data-nav="wallet">Money <em>টাকা</em></a>
+                <a href="#/support" data-nav="support">Expert help <em>পরামর্শ</em></a>
+                <a href="#/reviews" data-nav="reviews">Reviews <em>মতামত</em></a>
+                <a href="#/profile" data-nav="profile">Profile <em>প্রোফাইল</em></a>
+            </nav>
+            <button class="rail__out" id="logoutBtn">Sign out</button>
+        </aside>
+
+        <header class="topbar">
+            <button class="icobtn" id="menuBtn" aria-label="Open menu">☰</button>
+            <div class="topbar__who">
+                <strong id="topName">Farmer</strong>
+                <span id="topMeta">—</span>
+            </div>
+            <div class="topbar__right">
+                <button class="icobtn" id="bellBtn" aria-label="Notifications">🔔<span class="dot" id="bellDot"
+                        hidden></span></button>
+                <a class="btn btn--primary btn--sm" href="#/project/new">New project</a>
+                <span class="avatar" id="topAvatar">RK</span>
+            </div>
+        </header>
+
+        <main class="main" id="main"><!-- rendered by app.js --></main>
+
+        <div class="panel" id="notifPanel" hidden>
+            <div class="panel__head">
+                <h3>Notifications</h3>
+                <button class="icobtn" id="notifClose" aria-label="Close">✕</button>
+            </div>
+            <div id="notifList"></div>
+            <button class="btn btn--ghost btn--block" id="notifClear">Mark all as read</button>
+        </div>
+    </div>
+
+    <div class="modal" id="modal" hidden>
+        <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal__head">
+                <h3 id="modalTitle"></h3><button class="icobtn" id="modalClose" aria-label="Close">✕</button>
+            </div>
+            <div class="modal__body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <div class="toasts" id="toasts" aria-live="polite"></div>
+
+    <script type="module" src="farmer.ts"></script>
+
+</body>
+
+</html>

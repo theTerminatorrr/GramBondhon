@@ -1,0 +1,118 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: agri-postgres
+    restart: unless-stopped
+    ports:
+      - "54322:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: agri_platform
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - agri-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d agri_platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  redis:
+    image: redis:7-alpine
+    container_name: agri-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - agri-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  minio:
+    image: minio/minio:latest
+    container_name: agri-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - agri-network
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: agri-pgadmin
+    restart: unless-stopped
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@agri-platform.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - agri-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  gram-indexer:
+    build:
+      context: .
+      dockerfile: Dockerfile.indexer
+    container_name: agri-indexer
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/agri_platform"
+      REDIS_URL: "redis://redis:6379"
+      BLOCKCHAIN_RPC_URL: "http://host.docker.internal:8545"
+      AGRI_PLATFORM_ADDRESS: "0x4F129B515286F0dE0Ec43093224B4912953B8230"
+      INDEXER_POLL_INTERVAL_MS: "1500"
+      INDEXER_MAX_BLOCK_RANGE: "2000"
+      INDEXER_REORG_BUFFER_BLOCKS: "12"
+      RUST_LOG: "info,gram_indexer=debug"
+    networks:
+      - agri-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  minio_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  agri-network:
+    driver: bridge

@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GramBandhan - Homepage</title>
+  
+  <meta name="description" content="Connecting global ethical investors with local farmers and rural women artisans to build a sustainable, interest-free future for rural communities in Bangladesh." />
+
+  <!-- Google Fonts: Plus Jakarta Sans for crisp clarity, Tiro Bangla for authentic Bengali script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. NAVBAR (EXPANDED FOR FULL GRAMBONDHON ECOSYSTEM)
+       ========================================================================= -->
+  <header class="main-navbar" id="navbar">
+    <div class="container nav-content">
+      
+      <!-- Brand Logo -->
+      <a href="homepage.html" class="brand-logo" aria-label="GramBandhan Home">
+        <img src="/images/logo-transparent.png" alt="GramBandhan" class="brand-logo-img" />
+      </a>
+
+      <!-- Expanded Desktop Navigation Menu Matching Project Ecosystem -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="homepage.html" class="nav-link active">Home</a></li>
+          <li><a href="projects.html" class="nav-link">Investor Projects</a></li>
+          <li><a href="market.html" class="nav-link">Marketplace</a></li>
+          <li><a href="investor.html" class="nav-link">Investor</a></li>
+          <li><a href="homepage.html#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Login, Sign Up Actions (Search removed for clean, uncluttered layout) -->
+      <div class="nav-actions">
+        <button class="nav-login-link" id="nav-login-btn">Login</button>
+        <div class="nav-user-badge" id="nav-user-badge" style="display: none;"></div>
+        <button class="btn btn-signup-nav" id="nav-invest-btn">Sign Up</button>
+
+        <button class="hamburger-btn" id="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         SECTOR: HERO SECTION (THE SLIDESHOW IS IN IT)
+         Logic: src/hero-section.ts | Styles: css/hero-section.css
+         ========================================================================= -->
+    <section class="hero-section" id="hero-slideshow" data-section-name="Hero Section" aria-label="Hero Section - Slideshow">
+      <!-- Fast cycling crystal-clear slides of authentic Bangladeshi agriculture & artisans -->
+      <div class="hero-slides-wrapper" id="hero-slides-wrapper"></div>
+
+      <!-- Pure Text Directly Over Image (No frosted/watery card background) -->
+      <div class="hero-content-container">
+        <div class="hero-text-content">
+          <h1 class="hero-heading">Empowering Rural Growth<br class="hero-br" />Through Ethical Investment</h1>
+          <p class="hero-subtext">
+            Connecting global ethical investors with local farmers to build a sustainable, interest-free future for rural communities.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn btn-hero-farmer" id="cta-join-farmer">Join as Farmer</button>
+            <button class="btn btn-hero-investor" id="cta-become-investor">Become an Investor</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fast Carousel Indicators (Clean & subtle) -->
+      <div class="hero-dots-wrapper" id="hero-dots-wrapper"></div>
+
+
+    </section>
+
+    <!-- =========================================================================
+         3. HALAL INVESTMENT REIMAGINED (SPOTLIGHT)
+         ========================================================================= -->
+    <section class="spotlight-section">
+      <div class="container spotlight-grid">
+        <div class="spotlight-text">
+          <div class="spotlight-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <span>Shariah Compliant & Transparent</span>
+          </div>
+
+          <h2 class="spotlight-title">Halal Investment Reimagined</h2>
+          <p class="spotlight-desc">
+            At Gram-Bondhon, we replace traditional interest-based models with a partnership-driven profit-sharing approach. Our investments are backed by real assets—crops, livestock, and artisanal goods—ensuring your wealth grows ethically while directly impacting rural livelihoods.
+          </p>
+
+          <div class="spotlight-stats-row">
+            <div class="sp-stat-item">
+              <strong>0%</strong>
+              <span>INTEREST (RIBA)</span>
+            </div>
+            <div class="sp-stat-item">
+              <strong>100%</strong>
+              <span>ASSET BACKED</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="spotlight-image-card">
+          <img src="/images/hero-bangladesh-farming.jpg" alt="Bangladeshi farmer cultivating stepped rice fields under golden sunrise" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTOR: INVESTOR PORTAL HERO (PHOTO 4)
+         Logic: src/investor-profile.ts | Styles: src/styles/investor-portal.css
+         ========================================================================= -->
+    <div id="investor-hero-container"></div>
+
+    <!-- =========================================================================
+         SECTOR: ACTIVE PROJECTS
+         Logic: src/active-projects.ts | Styles: src/styles/active-projects.css
+         ========================================================================= -->
+    <section class="projects-section" id="projects">
+      <div class="container">
+        
+        <div class="projects-header-row">
+          <div>
+            <div class="projects-tagline-badge">
+              <svg class="tagline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+              <span>Invest Now. Create Impact. Earn Returns !!</span>
+            </div>
+            <h2 class="section-title-dark">Active Projects</h2>
+            <p class="section-subtitle-dark">Invest in the future of rural Bangladesh and beyond.</p>
+          </div>
+
+          <a href="#projects" class="link-view-all" id="btn-view-all-projects">
+            <span>View All</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Centered, Longer & Wider Project Search Bar and Slide Bar In/Out Type -->
+        <div class="project-controls-bar">
+          <!-- 1. Centered Large Search Bar with Autocomplete Recommendation -->
+          <div class="project-search-wrapper" id="project-search-wrapper">
+            <div class="project-search-box">
+              <span class="p-search-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.3">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </span>
+              <input type="text" id="project-search-input" placeholder="Search 31+ active projects across Bangladesh (type 'h' for Handicrafts, 's' for Short-Term...)" autocomplete="off" />
+              <button class="project-search-clear" id="project-search-clear" title="Clear Search" aria-label="Clear Search">✕</button>
+            </div>
+            <div class="project-search-suggestions" id="project-search-suggestions"></div>
+          </div>
+
+          <!-- 2. Centered In-and-Out Sliding Category Bar -->
+          <div class="project-slide-bar-wrapper">
+            <button class="slide-nav-btn slide-prev" id="slide-categories-prev" title="Slide Left" aria-label="Slide Left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div class="project-filter-pills" id="project-filters">
+              <button class="filter-pill active" data-category="all">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>All (সকল ৩১টি)</span>
+              </button>
+              <button class="filter-pill" data-category="short_term">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Short-Term (স্বল্পমেয়াদী ৩-৪ মাস)</span>
+              </button>
+              <button class="filter-pill" data-category="long_term">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span>Long-Term (দীর্ঘমেয়াদী ৫-৬+ মাস)</span>
+              </button>
+              <button class="filter-pill" data-category="handicrafts">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
+                <span>Handicrafts (হস্তশিল্প)</span>
+              </button>
+              <button class="filter-pill" data-category="crops">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M12 20V10M12 10a5 5 0 0 1 5-5c0 4-3 5-5 5zM12 14a5 5 0 0 0-5-5c0 4 3 5 5 5z"/></svg>
+                <span>Crops & Farming (কৃষি ও ফসল)</span>
+              </button>
+              <button class="filter-pill" data-category="livestock">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>
+                <span>Livestock & Dairy (পশুপালন)</span>
+              </button>
+              <button class="filter-pill" data-category="fisheries">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 12c-2.5-3-6-4-11-4 0 5 1 8.5 4 11 2-1 4.5-1.5 7-1.5M17 12l5 3-1.5-3L22 9l-5 3z"/></svg>
+                <span>Fisheries (মৎস্য চাষ)</span>
+              </button>
+              <button class="filter-pill" data-category="agro">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                <span>Other / Agro (অন্যান্য)</span>
+              </button>
+            </div>
+            <button class="slide-nav-btn slide-next" id="slide-categories-next" title="Slide Right" aria-label="Slide Right">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid (All Active Projects) -->
+        <div class="projects-grid" id="active-projects-grid"></div>
+
+        <!-- View All Projects Expandable Toggle Button at Bottom -->
+        <div class="projects-bottom-cta" id="projects-bottom-cta">
+          <button class="btn-expand-projects" id="btn-expand-projects">
+            <span id="btn-expand-projects-text">View All Projects (৩০টি প্রকল্প দেখুন)</span>
+            <svg id="btn-expand-projects-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. HOW GRAMBANDHAN WORKS (6-CARD FRAME)
+         ========================================================================= -->
+    <section class="how-it-works-section" id="how-it-works">
+      <div class="container">
+        <div class="how-header-center">
+          <span class="how-badge-step">STEP-BY-STEP</span>
+          <h2 class="section-title-dark">How GramBandhan Works</h2>
+          <p class="section-subtitle-dark">
+            Our simple process connects investors with rural entrepreneurs for transparent, ethical growth
+          </p>
+        </div>
+
+        <div class="how-frame-box">
+          <div class="how-steps-grid">
+            
+            <div class="how-step-card">
+              <span class="how-step-number">1</span>
+              <div class="how-step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="7" cy="17" r="4"/>
+                  <circle cx="7" cy="17" r="1.5"/>
+                  <circle cx="18" cy="18" r="2.5"/>
+                  <path d="M7 13h5l2 3h2.5"/>
+                  <path d="M11 9h4v4"/>
+                  <path d="M15 9V5h2"/>
+                  <path d="M9 13V8h3"/>
+                </svg>
+              </div>
+              <h3 class="how-step-title">Farmers Create Projects</h3>
+              <p class="how-step-desc">
+                Verified rural entrepreneurs list their detailed agricultural or artisan business plans for the community.
+              </p>
+            </div>
+
+            <div class="how-step-card">
+              <span class="how-step-number">2</span>
+              <div class="how-step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="6" width="20" height="12" rx="3"/>
+                  <circle cx="12" cy="12" r="2.5"/>
+                  <path d="M6 12h.01M18 12h.01"/>
+                </svg>
+              </div>
+              <h3 class="how-step-title">Investors Fund Ventures</h3>
+              <p class="how-step-desc">
+                Choose from diverse bonds including crops, livestock, or handicrafts, and invest with as little as 5,000 BDT.
+              </p>
+            </div>
+
+            <div class="how-step-card">
+              <span class="how-step-number">3</span>
+              <div class="how-step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/>
+                </svg>
+              </div>
+              <h3 class="how-step-title">Training & Support</h3>
+              <p class="how-step-desc">
+                Admin provides continuous training to farmers and artisans, helping them improve skills and work effectively using their expertise.
+              </p>
+            </div>
+
+            <div class="how-step-card">
+              <span class="how-step-number">4</span>
+              <div class="how-step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+              </div>
+              <h3 class="how-step-title">Production & Monitoring</h3>
+              <p class="how-step-desc">
+                With guidance and resources in place, production begins while admin monitors progress and ensures quality standards are maintained.
+              </p>
+            </div>
+
+            <div class="how-step-card">
+              <span class="how-step-number">5</span>
+              <div class="how-step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 7V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"/>
+                  <path d="M2 7h20l-1.5 5.5a2 2 0 0 1-2 1.5H5.5a2 2 0 0 1-2-1.5L2 7z"/>
+                  <path d="M5 14v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"/>
+                  <path d="M10 17h4v4h-4z"/>
+                </svg>
+              </div>
+              <h3 class="how-step-title">Sales & Distribution</h3>
+              <p class="how-step-desc">
+                Admin collects and sells goods through online platform and local markets. Customers can also purchase directly from the platform.
+              </p>
+            </div>
+
+            <div class="how-step-card">
+              <span class="how-step-number">6</span>
+              <div class="how-step-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                  <polyline points="17 6 23 6 23 12"/>
+                </svg>
+              </div>
+              <h3 class="how-step-title">Profit Distribution</h3>
+              <p class="how-step-desc">
+                Generated profit is distributed fairly between investors as returns, farmers and artisans as income, and the platform for operational support.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTOR: MARKETPLACE
+         Logic: src/marketplace.ts | Styles: src/styles/marketplace.css
+         ========================================================================= -->
+    <section class="marketplace-section" id="marketplace">
+      <div class="container">
+        <!-- Title of Marketplace Before Its Section (As requested) -->
+        <div class="marketplace-header-row">
+          <div>
+            <span class="market-pill-badge">VILLAGE MARKETPLACE • গ্রামীণ হস্তশিল্প বাজার</span>
+            <h2 class="section-title-dark">Handcrafted Marketplace & Rural Heritage</h2>
+            <p class="section-subtitle-dark">
+              Explore authentic Nakshi Kantha, golden jute goods, pottery and bamboo crafts direct from rural women artisans across Bangladesh.
+            </p>
+          </div>
+          <button class="btn btn-primary" data-action="open-marketplace">
+            <span>Browse Full Store (দোকান দেখুন)</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div class="market-split-layout">
+          <div class="market-gallery-grid">
+            <div class="market-img-box">
+              <img src="/images/nakshi-kantha-artisan.jpg" alt="Handcrafted textile texture" loading="lazy" />
+            </div>
+            <div class="market-img-box">
+              <img src="/images/clay-pottery.jpg" alt="Artisan hands shaping terracotta pottery on wheel" loading="lazy" />
+            </div>
+            <div class="market-img-box">
+              <img src="/images/jute-bamboo-women.jpg" alt="Handwoven bamboo cane baskets" loading="lazy" />
+            </div>
+            <div class="market-img-box">
+              <img src="/images/rajshahi-mango-harvest.jpg" alt="Fresh Rajshahi mango crates" loading="lazy" />
+            </div>
+          </div>
+
+          <div>
+            <span class="market-tag">ARTISAN EMPOWERMENT</span>
+            <h3 style="font-size: 1.85rem; font-weight: 800; color: #0A2C22; margin-bottom: 10px;">Preserving Timeless Bengal Craftsmanship</h3>
+            <p class="section-subtitle-dark" style="margin-bottom: 18px;">
+              Every purchase directly benefits village women artisans of Jamalpur, Rajshahi and Kurigram, creating sustainable livelihood without middlemen exploitation.
+            </p>
+
+          <ul class="market-checklist">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Authentic Artisan Workmanship</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>100% Eco-friendly Materials</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Fair Remuneration for Rural Women</span>
+            </li>
+          </ul>
+
+          <button class="btn btn-primary btn-lg" data-action="open-marketplace">
+            <span>Explore Marketplace</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. WHY GRAMBANDHAN
+         ========================================================================= -->
+    <section class="why-section" id="why-us">
+      <div class="container why-grid">
+        <div>
+          <h2 class="section-title-dark">Why GramBandhan?</h2>
+          <p class="section-subtitle-dark">
+            We replace traditional predatory practices with modern, verifiable and transparent Halal agricultural contracts.
+          </p>
+
+          <div class="why-features-grid">
+            <div class="why-feat-card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </div>
+              <h4>Verified Land</h4>
+              <p>Physical deed checks, satellite boundary mapping, and local Union Parishad certification before listing.</p>
+            </div>
+            <div class="why-feat-card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3v18M3 7l9-4 9 4M3 7l3 8a3 3 0 0 0 6 0L9 7M15 7l3 8a3 3 0 0 0 6 0l-3-8"/>
+                  <path d="M6 21h12"/>
+                </svg>
+              </div>
+              <h4>Asset-Backed</h4>
+              <p>Every single BDT invested corresponds to tangible crops, cattle, or artisan inventory on the ground.</p>
+            </div>
+            <div class="why-feat-card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <polyline points="9 12 11 14 15 10"/>
+                </svg>
+              </div>
+              <h4>Zero Usury (Riba)</h4>
+              <p>Pure profit-and-loss sharing rooted in asset-backed productive real economy principles.</p>
+            </div>
+            <div class="why-feat-card">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <h4>Field Officers</h4>
+              <p>Trained agronomists and supervisors monitor crop health and livestock bi-weekly.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-image-card">
+          <img src="/images/hero-bangladesh-farming.jpg" alt="Bangladeshi farmer cultivating stepped rice fields under golden sunrise" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         8. TESTIMONIALS & TRUST BADGES
+         ========================================================================= -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div style="text-align: center;">
+          <h2 class="section-title-dark">Trusted by the Community</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">
+                "GramBandhan makes ethical investing tangible. I can trace my capital directly to verified farms in Gazipur with inspection reports on my dashboard. Knowing my returns come from real village enterprise gives immense peace of mind."
+              </p>
+            </div>
+            <div class="author-info">
+              <h5>Tariqur Rahman</h5>
+              <span>Individual Impact Investor • Dhaka</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">
+                "Before GramBandhan, local middlemen gave us barely ৳600 for a Kantha that took 3 weeks of stitching. With GramBandhan’s verified funding, our women get fair advance wages and share in retail profits."
+              </p>
+            </div>
+            <div class="author-info">
+              <h5>Rokeya Begum</h5>
+              <span>Master Artisan • Islampur, Jamalpur</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-quote">
+                "The level of diligence and zero-hidden-fee clarity is unmatched. The combination of field officers on the ground and digital milestone reporting bridges the urban-rural divide like no other platform in Bangladesh."
+              </p>
+            </div>
+            <div class="author-info">
+              <h5>Kazi Farhan Ahmed</h5>
+              <span>Agri-Tech Angel Investor • Chattogram</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-badges-row">
+          <div class="trust-badge-item">
+            <span class="badge-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 20h10M12 20V10M12 10a5 5 0 0 1 5-5c0 4-3 5-5 5zM12 14a5 5 0 0 0-5-5c0 4 3 5 5 5z"/>
+              </svg>
+            </span>
+            <span>Verified Agro</span>
+          </div>
+          <div class="trust-badge-item">
+            <span class="badge-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </span>
+            <span>Shariah & Legal</span>
+          </div>
+          <div class="trust-badge-item">
+            <span class="badge-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <span>Geolocation</span>
+          </div>
+          <div class="trust-badge-item">
+            <span class="badge-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="12" rx="3"/>
+                <circle cx="12" cy="12" r="2.5"/>
+                <path d="M6 12h.01M18 12h.01"/>
+              </svg>
+            </span>
+            <span>Direct Payout</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         9. STATS BANNER
+         ========================================================================= -->
+    <section class="stats-banner" aria-label="Platform Metrics">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <strong>500+</strong>
+          <span>Verified Farmers & Artisans</span>
+        </div>
+        <div class="stat-item">
+          <strong>2400+</strong>
+          <span>Active Ethical Investors</span>
+        </div>
+        <div class="stat-item">
+          <strong>18</strong>
+          <span>Districts Across Bangladesh</span>
+        </div>
+        <div class="stat-item">
+          <strong>100%</strong>
+          <span>Halal & Asset-Backed</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         10. FREQUENTLY ASKED QUESTIONS (FAQ) SECTION
+         Styles: src/styles/faq.css | Logic: src/main.ts
+         ========================================================================= -->
+    <section class="faq-section" id="faq" aria-label="Frequently Asked Questions">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-title-wrapper" style="text-align: center; margin-bottom: 28px;">
+          <div class="section-badge" style="margin: 0 auto 12px; display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1); color: #047857; padding: 6px 16px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span>Common Inquiries & Answers</span>
+          </div>
+          <h2 style="font-size: 2.25rem; font-weight: 800; color: #02221A; margin-bottom: 12px; letter-spacing: -0.02em;">
+            Frequently Asked Questions
+          </h2>
+          <p style="font-size: 1rem; color: #475569; max-width: 640px; margin: 0 auto; line-height: 1.6;">
+            Everything you need to know about ethical agri-investments, 100% Shariah compliance, real-time satellite monitoring, and direct farmer impact.
+          </p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="faq-filter-tabs">
+          <button class="faq-tab-btn active" data-faq-cat="all">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>All Questions</span>
+          </button>
+          <button class="faq-tab-btn" data-faq-cat="investing">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <span>Investment & Returns</span>
+          </button>
+          <button class="faq-tab-btn" data-faq-cat="shariah">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 7l9-4 9 4M3 7l3 8a3 3 0 0 0 6 0L9 7M15 7l3 8a3 3 0 0 0 6 0l-3-8"/><path d="M6 21h12"/></svg>
+            <span>Shariah & Halal</span>
+          </button>
+          <button class="faq-tab-btn" data-faq-cat="security">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <span>Risk & Satellite Tech</span>
+          </button>
+          <button class="faq-tab-btn" data-faq-cat="farmers">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M12 20V10M12 10a5 5 0 0 1 5-5c0 4-3 5-5 5zM12 14a5 5 0 0 0-5-5c0 4 3 5 5 5z"/></svg>
+            <span>Farmers & Artisans</span>
+          </button>
+        </div>
+
+        <!-- Accordion Items List -->
+        <div class="faq-accordion-list" id="faq-accordion">
+          <!-- Item 1: How Investing Works -->
+          <div class="faq-item active" data-category="investing">
+            <button class="faq-question-btn" aria-expanded="true">
+              <span class="faq-q-text">How does investing in GramBandhan agricultural projects work?</span>
+              <span class="faq-toggle-icon">−</span>
+            </button>
+            <div class="faq-answer-pane" style="max-height: 400px;">
+              <div class="faq-answer-inner">
+                <p>
+                  GramBandhan operates an asset-backed, direct participatory model. You select vetted agricultural cycles (such as Bogura Potato, Boro Rice in Sylhet, or Manikganj Mustard) or rural artisanal cooperatives across 18 districts of Bangladesh.
+                </p>
+                <ul class="faq-bullet-list">
+                  <li><strong>Vetted Projects:</strong> Each project is inspected, soil-tested, and audited before listing.</li>
+                  <li><strong>Digital Funding:</strong> Invest securely through bKash, Nagad, or standard Bangladeshi bank transfers (BEFTN/NPSB).</li>
+                  <li><strong>Seasonal Payouts:</strong> Upon harvest and wholesale distribution, principal capital and contractual profit-share are deposited into your wallet.</li>
+                </ul>
+                <div class="faq-highlight-pill">
+                  <span class="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M12 20V10M12 10a5 5 0 0 1 5-5c0 4-3 5-5 5zM12 14a5 5 0 0 0-5-5c0 4 3 5 5 5z"/></svg>
+                  </span>
+                  <span>100% Tangible Asset Backing: Capital directly funds verified seeds, organic fertilizers, and farming inputs.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Shariah Compliance -->
+          <div class="faq-item" data-category="shariah">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span class="faq-q-text">Is GramBandhan 100% Halal and Shariah-compliant?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                <p>
+                  <strong>Yes, absolutely.</strong> GramBandhan strictly rejects conventional interest-bearing (Riba) loans. Instead, we structure all transactions under authentic Islamic financing principles:
+                </p>
+                <ul class="faq-bullet-list">
+                  <li><strong>Mudarabah & Musharakah:</strong> True equity and profit-loss sharing partnerships based on pre-agreed gross revenue and yield margins.</li>
+                  <li><strong>Zero Guaranteed Riba:</strong> Returns correspond directly to real seasonal yields and market pricing at wholesale mandis.</li>
+                  <li><strong>Independent Shariah Board:</strong> All farming contracts and distribution workflows are certified by recognized Islamic scholars and financial jurists in Dhaka.</li>
+                </ul>
+                <div class="faq-highlight-pill">
+                  <span class="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 7l9-4 9 4M3 7l3 8a3 3 0 0 0 6 0L9 7M15 7l3 8a3 3 0 0 0 6 0l-3-8"/><path d="M6 21h12"/></svg>
+                  </span>
+                  <span>0% Interest Guarantee: Clean, ethical, and Halal returns vetted under Islamic commercial jurisprudence.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Minimum Investment & ROI -->
+          <div class="faq-item" data-category="investing">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span class="faq-q-text">What is the minimum investment amount and expected timeline?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                <p>
+                  We believe ethical investing should be accessible to all Bangladeshis. Our micro-investment slots start from as low as <strong>BDT 5,000</strong> up to institutional tiers.
+                </p>
+                <ul class="faq-bullet-list">
+                  <li><strong>Investment Cycle:</strong> Typically ranges from 4 to 8 months, synchronized with natural harvest periods.</li>
+                  <li><strong>Projected Returns:</strong> Historical annualized returns average between <strong>14% to 22%</strong> depending on the crop category and market season.</li>
+                  <li><strong>Transparent Portals:</strong> Track daily progress, weather reports, and projected yield metrics inside your investor dashboard.</li>
+                </ul>
+                <div class="faq-highlight-pill">
+                  <span class="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="3"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg>
+                  </span>
+                  <span>Accessible Entry: Start building your Halal agricultural portfolio with just BDT 5,000.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Risk Mitigation & Satellite Tech -->
+          <div class="faq-item" data-category="security">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span class="faq-q-text">How are crop failures, flood, and weather risks managed?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                <p>
+                  Agriculture carries natural climate factors. GramBandhan deploys a comprehensive four-layer risk mitigation shield:
+                </p>
+                <ul class="faq-bullet-list">
+                  <li><strong>GNSS Satellite & Telemetry:</strong> Real-time satellite NDVI crop-health analysis and localized ground moisture sensors flag anomalies days before visible symptoms appear.</li>
+                  <li><strong>Parametric Micro-Takaful:</strong> Cooperative Islamic insurance shields farmer cohorts against catastrophic floods, cyclonic surges, or severe localized drought.</li>
+                  <li><strong>Agronomic Supervision:</strong> Dedicated field agronomists stationed in every district inspect plots weekly and enforce scientific disease management.</li>
+                  <li><strong>Geographic Diversification:</strong> Portfolios spread investments across diverse upazilas to avoid single-zone weather shocks.</li>
+                </ul>
+                <div class="faq-highlight-pill">
+                  <span class="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                  </span>
+                  <span>High-Tech Defense: Real-time satellite radar and ground IoT telemetry protect crop vitality 24/7.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5: Farmer & Artisan Onboarding -->
+          <div class="faq-item" data-category="farmers">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span class="faq-q-text">How are rural farmers and women artisans vetted and empowered?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                <p>
+                  We prioritize genuine smallholders and marginalized female artisans who lack access to institutional banking:
+                </p>
+                <ul class="faq-bullet-list">
+                  <li><strong>On-Ground Verification:</strong> Our district coordinators verify land ownership, Union Parishad identity credentials, and past 3-year farming track record.</li>
+                  <li><strong>Inputs Instead of Cash:</strong> We provide certified high-germination seeds, organic fertilizers, and mechanized tools rather than unsecured cash loans.</li>
+                  <li><strong>Eliminating Middlemen (Farias):</strong> Direct harvest procurement links farmers directly to corporate buyers and our consumer marketplace, delivering <strong>70%+ higher net earnings</strong>.</li>
+                </ul>
+                <div class="faq-highlight-pill">
+                  <span class="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M12 20V10M12 10a5 5 0 0 1 5-5c0 4-3 5-5 5zM12 14a5 5 0 0 0-5-5c0 4 3 5 5 5z"/></svg>
+                  </span>
+                  <span>Social Impact: Over 1,200 smallholder families and 350+ rural women artisans sustainably empowered.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6: Payout Process -->
+          <div class="faq-item" data-category="investing">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span class="faq-q-text">How and when do I receive my capital and profit returns?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                <p>
+                  Payouts are automated and transparently recorded on your digital contract ledger:
+                </p>
+                <ul class="faq-bullet-list">
+                  <li><strong>Harvest Closing:</strong> When produce is weighed and sold to verified buyers, total revenues are reconciled with warehouse receipts.</li>
+                  <li><strong>Direct Payout:</strong> Your principal investment plus your agreed profit share are transferred within <strong>7 to 10 working days</strong>.</li>
+                  <li><strong>Preferred Channel:</strong> Receive funds directly into your Bangladeshi bank account (BEFTN/NPSB/RTGS) or your personal bKash/Nagad wallet.</li>
+                </ul>
+                <div class="faq-highlight-pill">
+                  <span class="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  </span>
+                  <span>Prompt Settlement: Digital verification and automated remittance directly to your personal account.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7: Physical Farm Visits -->
+          <div class="faq-item" data-category="security">
+            <button class="faq-question-btn" aria-expanded="false">
+              <span class="faq-q-text">Can I visit the farm plots or monitor them via GPS satellite?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer-pane">
+              <div class="faq-answer-inner">
+                <p>
+                  <strong>Yes, full transparency is our signature standard!</strong> Every listed project features exact GNSS satellite coordinates on our interactive interactive map.
+                </p>
+                <ul class="faq-bullet-list">
+                  <li><strong>Interactive GNSS Map:</strong> Switch between road map and high-resolution satellite imagery directly on our homepage.</li>
+                  <li><strong>Open Farm Days:</strong> We organize regular guided field tours for registered investors to meet our farming partners in Gazipur, Bogura, and Sylhet.</li>
+                  <li><strong>Drone & Photo Updates:</strong> Receive bi-weekly high-definition drone progress photos and agronomist inspection logs.</li>
+                </ul>
+                <div class="faq-highlight-pill">
+                  <span class="pill-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span>Radical Transparency: See your exact GPS coordinates and vegetation indices anytime online.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help Callout Box -->
+        <div class="faq-help-box">
+          <div class="faq-help-content">
+            <div class="faq-help-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <h4>Still have questions or need personalized guidance?</h4>
+              <p>Our Dhaka-based investment specialists and Islamic finance advisory team are always available to help.</p>
+            </div>
+          </div>
+          <div class="faq-help-actions">
+            <button class="btn btn-secondary" id="btn-faq-ask-chat">
+              <span>Ask Agro-AI Assistant</span>
+            </button>
+            <a href="tel:+8801711234567" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+880 1711-234567</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         11. FINAL CTA BANNER
+         ========================================================================= -->
+    <section class="final-cta-section" style="background-image: url('/images/hero-bangladesh-farming.jpg');">
+      <div class="final-cta-overlay"></div>
+      <div class="container final-cta-content">
+        <h2 class="final-cta-title">Grow Your Wealth While Growing a Greener Tomorrow</h2>
+        <button class="btn btn-secondary btn-lg" id="cta-invest-banner">
+          Become an Investor Today
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       12. FOOTER
+       ========================================================================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#hero-slideshow" class="brand-logo" style="margin-bottom: 16px;">
+            <img src="/images/logo-white.png" alt="GramBandhan" class="brand-logo-img-footer" />
+          </a>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.6;">
+            A Bangladesh-based platform bridging conscious capital with hardworking farmers and rural women artisans across 18 districts.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#projects">Active Projects</a></li>
+            <li><a href="#marketplace" data-action="open-marketplace">Handcrafted Marketplace</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#why-us">Why GramBandhan</a></li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>For Investors</h4>
+          <ul class="footer-links">
+            <li><a href="#navbar" id="footer-login">Investor Portal</a></li>
+            <li><a href="#how-it-works">Shariah Advisory</a></li>
+            <li><a href="#how-it-works">Risk Disclosures</a></li>
+            <li><a href="#how-it-works">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Stay Connected</h4>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-bottom: 12px;">Level 7, Gulshan Avenue, Dhaka • +880 1711-234567</p>
+          <form onsubmit="event.preventDefault(); alert('Subscribed to GramBandhan updates!');" style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Enter your email" required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 9999px; padding: 8px 14px; color: #FFFFFF; font-size: 0.85rem; outline: none; flex-grow: 1;" />
+            <button type="submit" class="btn btn-secondary btn-sm">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 GramBandhan Bangladesh. All rights reserved. DEMO DATA: Agricultural investments reflect real seasonal yields and agreed profit ratios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       SECTOR: JOIN AS INVESTOR (AUTH MODAL)
+       Logic: src/join-as-investor.ts | Styles: src/styles/join-as-investor.css
+       ========================================================================= -->
+  <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true">
+    <div class="modal-window auth-modal-window" style="max-width: 520px;">
+      <button class="modal-close-btn" id="close-auth-modal" aria-label="Close modal">×</button>
+      
+      <!-- Brand Header -->
+      <div class="auth-modal-header" style="text-align: center; padding: 24px 28px 16px;">
+        <div style="display: inline-flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+          <img src="/images/logo-transparent.png" alt="GramBandhan" style="height: 38px; width: auto; max-width: 190px; object-fit: contain;" />
+        </div>
+        <p style="font-size: 0.85rem; color: #5B6E66; margin: 0;">Empowering rural enterprise through ethical, interest-free connection</p>
+      </div>
+
+      <!-- Project Context Alert if triggered from a project card -->
+      <div id="auth-modal-project-context" style="display: none; background: #ECFDF5; border: 1px solid #A7F3D0; padding: 10px 16px; margin: 0 24px 14px; border-radius: 8px; font-size: 0.825rem; color: #065F46;"></div>
+
+      <!-- Modal Tab Switcher: Sign Up vs Login -->
+      <div class="auth-tab-bar" style="display: flex; border-bottom: 1px solid #E2E8F0; margin: 0 24px;">
+        <button type="button" class="auth-tab-btn active" id="tab-btn-signup" style="flex: 1; padding: 12px; font-weight: 700; font-size: 0.95rem; border: none; background: none; cursor: pointer; border-bottom: 3px solid #02221A; color: #02221A;">
+          Sign Up (নিবন্ধন)
+        </button>
+        <button type="button" class="auth-tab-btn" id="tab-btn-login" style="flex: 1; padding: 12px; font-weight: 700; font-size: 0.95rem; border: none; background: none; cursor: pointer; border-bottom: 3px solid transparent; color: #64748B;">
+          Sign In (প্রবেশ)
+        </button>
+      </div>
+
+      <div style="padding: 20px 24px 28px;">
+        <!-- TAB 1: SIGN UP FORM -->
+        <form id="form-signup" class="auth-form-view">
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label for="signup-name" style="display: block; font-size: 0.825rem; font-weight: 700; color: #0A2C22; margin-bottom: 5px;">
+              Full Name / পুরো নাম <span style="color: #EF4444;">*</span>
+            </label>
+            <input type="text" id="signup-name" placeholder="e.g. Tanvir Rahman / তানভীর রহমান" required style="width: 100%; padding: 10px 14px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.9rem; outline: none; transition: border-color 0.2s;" />
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label for="signup-identifier" style="display: block; font-size: 0.825rem; font-weight: 700; color: #0A2C22; margin-bottom: 5px;">
+              Mobile Number or Email / মোবাইল বা ইমেইল <span style="color: #EF4444;">*</span>
+            </label>
+            <input type="text" id="signup-identifier" placeholder="017XX-XXXXXX or you@example.com" required style="width: 100%; padding: 10px 14px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.9rem; outline: none; transition: border-color 0.2s;" />
+          </div>
+
+          <!-- Role Selection: Farmer, Investor, Buyer -->
+          <div class="form-group" style="margin-bottom: 18px;">
+            <label style="display: block; font-size: 0.825rem; font-weight: 700; color: #0A2C22; margin-bottom: 8px;">
+              Sign Up As / ভূমিকা নির্বাচন করুন (Select all that apply):
+            </label>
+            <div class="auth-roles-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+              <!-- Role 1: Farmer -->
+              <label class="auth-role-card" id="role-label-farmer" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 12px 8px; border: 1.5px solid #CBD5E1; border-radius: 10px; cursor: pointer; transition: all 0.2s; background: #FFFFFF;">
+                <input type="checkbox" name="auth-role" value="farmer" id="role-check-farmer" style="display: none;" />
+                <div class="role-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="7" cy="17" r="4"/><circle cx="7" cy="17" r="1.5"/><circle cx="18" cy="18" r="2.5"/><path d="M7 13h5l2 3h2.5"/><path d="M11 9h4v4"/><path d="M15 9V5h2"/><path d="M9 13V8h3"/>
+                  </svg>
+                </div>
+                <strong style="font-size: 0.85rem; color: #02221A;">Farmer</strong>
+                <span style="font-size: 0.7rem; color: #5B6E66; line-height: 1.2; margin-top: 2px;">কৃষক / কারিগর</span>
+              </label>
+
+              <!-- Role 2: Investor -->
+              <label class="auth-role-card selected" id="role-label-investor" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 12px 8px; border: 2px solid #10B981; border-radius: 10px; cursor: pointer; transition: all 0.2s; background: #ECFDF5;">
+                <input type="checkbox" name="auth-role" value="investor" id="role-check-investor" checked style="display: none;" />
+                <div class="role-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                    <polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                </div>
+                <strong style="font-size: 0.85rem; color: #02221A;">Investor</strong>
+                <span style="font-size: 0.7rem; color: #047857; line-height: 1.2; margin-top: 2px;">বিনিয়োগকারী</span>
+              </label>
+
+              <!-- Role 3: Buyer -->
+              <label class="auth-role-card" id="role-label-buyer" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 12px 8px; border: 1.5px solid #CBD5E1; border-radius: 10px; cursor: pointer; transition: all 0.2s; background: #FFFFFF;">
+                <input type="checkbox" name="auth-role" value="buyer" id="role-check-buyer" style="display: none;" />
+                <div class="role-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                  </svg>
+                </div>
+                <strong style="font-size: 0.85rem; color: #02221A;">Buyer</strong>
+                <span style="font-size: 0.7rem; color: #5B6E66; line-height: 1.2; margin-top: 2px;">পণ্য ক্রেতা</span>
+              </label>
+            </div>
+            <p style="font-size: 0.725rem; color: #64748B; margin-top: 6px; text-align: center;">
+              <em>Farmers & Investors automatically enjoy zero-friction Buyer privileges at the Marketplace.</em>
+            </p>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="width: 100%; padding: 12px; font-weight: 700; background: #02221A; color: #FFFFFF; border-radius: 8px; border: none; cursor: pointer;">
+            Complete Sign Up (নিবন্ধন সম্পন্ন করুন) →
+          </button>
+        </form>
+
+        <!-- TAB 2: SIGN IN / LOGIN FORM -->
+        <div id="auth-login-view" class="auth-form-view" style="display: none;">
+          <!-- 3 User Character Logins + Single Sign-In for Admin -->
+          <div style="margin-bottom: 20px;">
+            <div style="font-size: 0.825rem; font-weight: 700; color: #0A2C22; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Select Account Character (3 Users &amp; Admin):</span>
+            </div>
+
+            <!-- 3 User Character Cards -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
+              <!-- 1. Farmer Character -->
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-quick-demo-farmer" style="font-size: 0.775rem; padding: 12px 6px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; border-radius: 10px; border: 1.5px solid #CBD5E1; background: #FFFFFF; cursor: pointer; transition: all 0.2s ease;">
+                <span style="font-size: 1.5rem; line-height: 1;">🌾</span>
+                <strong style="color: #0A2C22; font-size: 0.825rem;">Farmer</strong>
+                <span style="font-size: 0.7rem; color: #10B981; font-weight: 600;">Rafiqul Islam</span>
+                <span style="font-size: 0.65rem; color: #64748B;">Producer &amp; Harvest</span>
+              </button>
+
+              <!-- 2. Investor Character -->
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-quick-demo-investor" style="font-size: 0.775rem; padding: 12px 6px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; border-radius: 10px; border: 1.5px solid #CBD5E1; background: #FFFFFF; cursor: pointer; transition: all 0.2s ease;">
+                <span style="font-size: 1.5rem; line-height: 1;">💼</span>
+                <strong style="color: #0A2C22; font-size: 0.825rem;">Investor</strong>
+                <span style="font-size: 0.7rem; color: #0284C7; font-weight: 600;">Tariq Rahman</span>
+                <span style="font-size: 0.65rem; color: #64748B;">Ethical Portfolio</span>
+              </button>
+
+              <!-- 3. Buyer Character -->
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-quick-demo-buyer" style="font-size: 0.775rem; padding: 12px 6px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; border-radius: 10px; border: 1.5px solid #CBD5E1; background: #FFFFFF; cursor: pointer; transition: all 0.2s ease;">
+                <span style="font-size: 1.5rem; line-height: 1;">🛒</span>
+                <strong style="color: #0A2C22; font-size: 0.825rem;">Buyer</strong>
+                <span style="font-size: 0.7rem; color: #E11D48; font-weight: 600;">Tanvir Ahmed</span>
+                <span style="font-size: 0.65rem; color: #64748B;">Market Shopper</span>
+              </button>
+            </div>
+
+            <!-- Single Sign In for Admin -->
+            <button type="button" id="btn-admin-single-signin" style="width: 100%; padding: 11px 16px; background: linear-gradient(135deg, #0F172A, #1E293B); color: #F59E0B; border: 1.5px solid #F59E0B; border-radius: 10px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 3px 10px rgba(15, 23, 42, 0.2); transition: all 0.2s ease;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Admin Console — Single Sign In (সরাসরি এডমিন প্রবেশ) →</span>
+            </button>
+          </div>
+
+          <form id="form-login">
+            <div class="form-group" style="margin-bottom: 14px;">
+              <label for="login-email" style="display: block; font-size: 0.825rem; font-weight: 700; color: #0A2C22; margin-bottom: 5px;">
+                Email Address or Phone / ইমেইল বা ফোন
+              </label>
+              <input type="text" id="login-email" value="investor@grambandhan.bd" style="width: 100%; padding: 10px 14px; border: 1.5px solid #CBD5E1; border-radius: 8px; font-size: 0.9rem; outline: none;" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg" style="width: 100%; padding: 12px; font-weight: 700; background: #02221A; color: #FFFFFF; border-radius: 8px; border: none; cursor: pointer;">
+              Sign In (প্রবেশ করুন) →
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Details Modal (Matching media_1789675641330.png) -->
+  <div class="project-detail-fullscreen-backdrop" id="project-detail-modal" role="dialog" aria-modal="true">
+    <div class="project-detail-fullscreen-window" id="project-detail-modal-body"></div>
+  </div>
+
+  <!-- Marketplace Modal (Marketplace: src/marketplace.ts) -->
+  <div class="modal-backdrop market-modal-backdrop" id="marketplace-modal" role="dialog" aria-modal="true">
+    <!-- Dynamically managed by MarketplaceController in src/marketplace.ts -->
+  </div>
+
+  <!-- =========================================================================
+       SECTOR: JOIN AS FARMER (FARMER & RURAL WOMEN PORTAL MODAL)
+       Logic: src/join-as-farmer.ts | Styles: src/styles/join-as-farmer.css
+       ========================================================================= -->
+  <div class="modal-backdrop" id="farmer-women-modal" role="dialog" aria-modal="true">
+    <div class="modal-window farmer-modal-window">
+      <button class="modal-close-btn" id="close-farmer-modal" aria-label="Close modal">×</button>
+      
+      <div class="farmer-modal-header">
+        <div class="farmer-modal-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span>GramBandhan Producer Portal • গ্রামীণ উদ্যোক্তা পোর্টাল</span>
+        </div>
+        <h3 class="farmer-modal-title">Farmer & Rural Women Portal</h3>
+        <p class="farmer-modal-desc">
+          Apply for zero-interest Shariah funding for your crops, dairy or poultry, or sell your handcrafted products directly to conscious buyers across Bangladesh.
+        </p>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="portal-tab-bar">
+        <button class="portal-tab active" id="tab-btn-farmer" type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="17" r="4"/><circle cx="7" cy="17" r="1.5"/><circle cx="18" cy="18" r="2.5"/><path d="M7 13h5l2 3h2.5"/><path d="M11 9h4v4"/><path d="M15 9V5h2"/><path d="M9 13V8h3"/></svg>
+          <span>Crop & Livestock Farmer (কৃষক)</span>
+        </button>
+        <button class="portal-tab" id="tab-btn-artisan" type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
+          <span>Rural Woman Artisan (নারী কারিগর)</span>
+        </button>
+      </div>
+
+      <div class="farmer-modal-body">
+        <!-- Tab 1: Farmer View -->
+        <div class="portal-tab-content active" id="tab-content-farmer">
+          <div class="quick-demo-banner">
+            <div>
+              <strong>Quick Evaluation:</strong> Click below to immediately demo the farmer role
+            </div>
+            <button type="button" class="btn-quick-demo" id="btn-demo-farmer" style="display: inline-flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>1-Click Login as Rafiqul Islam (Gazipur Poultry)</span>
+            </button>
+          </div>
+
+          <form id="form-farmer-login" class="producer-form">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="farmer-name">Farmer Full Name / কৃষকের নাম</label>
+                <input type="text" id="farmer-name" placeholder="e.g. মোঃ রফিকুল ইসলাম" value="মোঃ রফিকুল ইসলাম" required />
+              </div>
+              <div class="form-group">
+                <label for="farmer-phone">Mobile Number / মোবাইল (bKash OTP)</label>
+                <input type="tel" id="farmer-phone" placeholder="017XX-XXXXXX" value="01712-345678" required />
+              </div>
+            </div>
+
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="farmer-district">District / জেলা</label>
+                <select id="farmer-district" class="form-select">
+                  <option value="Gazipur" selected>Gazipur (গাজীপুর)</option>
+                  <option value="Bogura">Bogura (বগুড়া)</option>
+                  <option value="Rajshahi">Rajshahi (রাজশাহী)</option>
+                  <option value="Rangpur">Rangpur (রংপুর)</option>
+                  <option value="Sylhet">Sylhet (সিলেট)</option>
+                  <option value="Panchagarh">Panchagarh (পঞ্চগড়)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="farmer-category">Agricultural Sector / কৃষি খাত</label>
+                <select id="farmer-category" class="form-select">
+                  <option value="Poultry" selected>Bio-Secure Poultry & Layer (পোল্ট্রি)</option>
+                  <option value="Rice">High-Yield Boro Rice (উচ্চফলনশীল ধান)</option>
+                  <option value="Dairy">Dairy Cattle & Milk (দুগ্ধ খামার)</option>
+                  <option value="Mango">Organic Mango Orchard (আমের বাগান)</option>
+                  <option value="Tea">Organic Smallholder Tea (চা চাষ)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="farmer-amount">Funding Needed / প্রয়োজনীয় মূলধন</label>
+                <select id="farmer-amount" class="form-select">
+                  <option value="75000">৳৭৫,০০০ (Small Starter Batch)</option>
+                  <option value="120000" selected>৳১,২০,০০০ (Standard Poultry Cycle)</option>
+                  <option value="250000">৳২,৫০,০০০ (Commercial Harvest)</option>
+                  <option value="500000">৳৫,০০,০০০ (Farm Expansion)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Shariah Contract / লাভ বণ্টন নীতি</label>
+                <div class="profit-ratio-badge">
+                  <span>Mudarabah: <strong>65% Farmer</strong> / 35% Investor</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Login & Submit Project Proposal (প্রকল্প জমা দিন)</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Tab 2: Rural Woman Artisan View -->
+        <div class="portal-tab-content" id="tab-content-artisan" style="display: none;">
+          <div class="quick-demo-banner" style="background: #FDF2F8; border-color: #FBCFE8; color: #9D174D;">
+            <div>
+              <strong>Quick Evaluation:</strong> Click below to test the rural artisan role
+            </div>
+            <button type="button" class="btn-quick-demo" id="btn-demo-artisan" style="background: #9D174D; display: inline-flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>1-Click Login as Fatima Begum (Nakshi Kantha)</span>
+            </button>
+          </div>
+
+          <form id="form-artisan-login" class="producer-form">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="artisan-name">Artisan Name / নারী কারিগরের নাম</label>
+                <input type="text" id="artisan-name" placeholder="e.g. Fatima Begum" value="ফাতেমা বেগম" required />
+              </div>
+              <div class="form-group">
+                <label for="artisan-phone">Mobile / বিকাশ নম্বর (OTP)</label>
+                <input type="tel" id="artisan-phone" placeholder="018XX-XXXXXX" value="01823-456789" required />
+              </div>
+            </div>
+
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="artisan-district">Village & District / জেলা</label>
+                <select id="artisan-district" class="form-select">
+                  <option value="Jamalpur" selected>Islampur, Jamalpur (জামালপুর)</option>
+                  <option value="Rajshahi">Charghat, Rajshahi (রাজশাহী)</option>
+                  <option value="Thakurgaon">Rani Sankail, Thakurgaon (ঠাকুরগাঁও)</option>
+                  <option value="Cumilla">Kotwali, Cumilla (কুমিল্লা)</option>
+                  <option value="Tangail">Tangail (টাঙ্গাইল)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="artisan-craft">Handicraft Specialization / হস্তশিল্প</label>
+                <select id="artisan-craft" class="form-select">
+                  <option value="Nakshi Kantha" selected>Heritage Nakshi Kantha Quilt (নকশী কাঁথা)</option>
+                  <option value="Jute Bags">Eco Jute Bag & Golden Fiber Crafts (পাটজাত পণ্য)</option>
+                  <option value="Bamboo Baskets">Bamboo & Cane Basketry (বাঁশ ও বেত সামগ্রী)</option>
+                  <option value="Terracotta">Clay Pottery & Terracotta (মৃৎশিল্প)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="artisan-group">Cooperative Society / নারী সমবায় সমিতি</label>
+              <input type="text" id="artisan-group" value="Jamalpur Rural Women Handicraft Society (জামালপুর মহিলা সমিতি)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 14px; background: #0D382A; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <span>Open Artisan Marketplace Store (দোকান নিবন্ধন করুন)</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Logged In Producer Dashboard View -->
+        <div class="portal-producer-dashboard" id="producer-dashboard" style="display: none;">
+          <div class="producer-status-card">
+            <div class="status-top-bar">
+              <span class="verified-badge-pill" style="display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Verified Producer • NID Validated</span>
+              </span>
+              <span class="gps-field-tag" style="display: inline-flex; align-items: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>GPS Geotagged Unit</span>
+              </span>
+            </div>
+            <h4 id="dash-producer-name" style="font-size: 1.25rem; font-weight: 800; color: #0A2C22; margin: 10px 0 4px;"></h4>
+            <p id="dash-producer-role" style="font-size: 0.85rem; color: #5B6E66; margin-bottom: 16px;"></p>
+
+            <div class="producer-stats-grid">
+              <div class="p-stat-box">
+                <span class="lbl">Active Project / Listing</span>
+                <strong id="dash-project-title">Gazipur Bio-Secure Poultry Shed</strong>
+              </div>
+              <div class="p-stat-box">
+                <span class="lbl">Funding Status</span>
+                <strong id="dash-funding-status" style="color: #0D382A;">45% Backed (12 Investors)</strong>
+              </div>
+              <div class="p-stat-box">
+                <span class="lbl">Payout Wallet</span>
+                <strong id="dash-payout-wallet">bKash Verified • 01712-***678</strong>
+              </div>
+            </div>
+
+            <div class="producer-timeline">
+              <div class="timeline-step done">
+                <div class="dot">✓</div>
+                <span>Application</span>
+              </div>
+              <div class="timeline-step done">
+                <div class="dot">✓</div>
+                <span>Inspection</span>
+              </div>
+              <div class="timeline-step active">
+                <div class="dot">●</div>
+                <span>Investor Funding</span>
+              </div>
+              <div class="timeline-step">
+                <div class="dot">○</div>
+                <span>Harvest / Dividends</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+              <button class="btn btn-secondary btn-block" id="btn-producer-new-project" type="button">Submit Another Proposal</button>
+              <button class="btn btn-primary btn-block" id="btn-producer-logout" type="button">Logout / Switch Role</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>

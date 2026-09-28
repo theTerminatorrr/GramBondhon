@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+target
+*.local
+.vscode
+.idea
+.temp_jony_gm
+.env
+.env*.local
+*.log

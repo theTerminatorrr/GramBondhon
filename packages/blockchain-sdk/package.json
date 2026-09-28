@@ -1,0 +1,22 @@
+{
+  "name": "@gm/blockchain-sdk",
+  "version": "1.0.0",
+  "description": "Blockchain SDK for Agriculture Profit-Sharing Platform",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "lint": "eslint src/**/*.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "viem": "^2.21.55"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "tsx": "^4.7.0",
+    "@types/node": "^20.11.0"
+  }
+}
