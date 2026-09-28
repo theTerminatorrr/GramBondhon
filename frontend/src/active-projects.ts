@@ -3,7 +3,7 @@ import { Project, ProjectCategory } from './types';
 import { authManager } from './auth';
 
 /**
- * GRAMBONDHON PROJECTS CONTROLLER
+ * GramBondhon PROJECTS CONTROLLER
  * 
  * Renders rich bilingual project cards with high-visibility profit indicators,
  * full-width layout, and interactive modal simulator for investors.
@@ -725,7 +725,7 @@ export class ActiveProjectsController {
               <path d="M21 3C13.5 3.5 6 9 4 17.5C3.5 19.5 4.5 21 6.5 21.5C8 22 10 21.5 12 20C17.5 16 20.5 10 21 3Z" fill="#10B981"/>
               <path d="M8.5 17C12 13.5 15.5 10 19 5.5" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
-            <span>GramBandhan</span>
+            <span>GramBondhon</span>
           </a>
 
           <div class="ss-nav-links">
@@ -990,7 +990,7 @@ export class ActiveProjectsController {
 
           <div class="ss-connect-item">
             <span>✉️</span>
-            <span>invest@grambandhan.com</span>
+            <span>invest@GramBondhon.com</span>
           </div>
           <div class="ss-connect-item">
             <span>📍</span>
@@ -1038,7 +1038,7 @@ export class ActiveProjectsController {
       <!-- 8. Footer (#02221A) -->
       <footer class="ss-footer">
         <div>
-          <strong>GramBandhan</strong> • Empowering rural Bangladesh through transparent, interest-free Shariah investment.
+          <strong>GramBondhon</strong> • Empowering rural Bangladesh through transparent, interest-free Shariah investment.
         </div>
         <div>
           Risk Disclosure • Annual Reports • Shariah Board Certified No: GB/SB/2026/08
@@ -1112,13 +1112,13 @@ export class ActiveProjectsController {
     confirmBtn?.addEventListener('click', () => {
       // Ensure user has authenticated investor session so payment gateway opens immediately
       if (!authManager.isAuthenticated()) {
-        authManager.loginWithCredentials('investor@grambandhan.com', 'investor123');
+        authManager.loginWithCredentials('investor@GramBondhon.com', 'investor123');
       } else if (!authManager.hasRole('investor')) {
         authManager.addRole('investor');
       }
 
       // Trigger Payment Gateway Modal with bKash, Nagad, Bank Transfer options
-      const openPayEvt = new CustomEvent('grambandhan:open-invest-payment', {
+      const openPayEvt = new CustomEvent('GramBondhon:open-invest-payment', {
         detail: {
           projectId: project.id,
           units: currentUnits
