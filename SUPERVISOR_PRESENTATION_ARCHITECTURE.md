@@ -1,14 +1,14 @@
-# 🌾 GramBandhan (গ্রামীণ বন্ধন) — 3-Tier Enterprise Architecture
+# 🌾 GramBondhon (গ্রামীণ বন্ধন) — 3-Tier Enterprise Architecture
 ## Official Project & Technical Presentation Guide for Supervisor Review
 
 ---
 
 ## 🏛️ 1. Executive Summary & 3-Tier System Architecture
 
-**GramBandhan** is structured following modern enterprise engineering principles, maintaining strict separation of concerns across **three core tiers**:
+**GramBondhon** is structured following modern enterprise engineering principles, maintaining strict separation of concerns across **three core tiers**:
 
 ```
-                                  GRAMBANDHAN ECOSYSTEM
+                                  GramBondhon ECOSYSTEM
  ┌───────────────────────────────────────────────────────────────────────────────────────┐
  │                                   1. FRONTEND TIER                                    │
  │  • Investor Portal    • Farmer Portal    • Admin & Staff Hub    • Village Marketplace │
@@ -85,8 +85,8 @@ GramBondhon-main/
 │   └── notifications_outbox.jsonl   # Append-Only Persistent Transaction Audit Log
 │
 ├── 🗄️ database/                     # Tier 3: Enterprise Data Tier & Schemas
-│   ├── grambandhan_unified_schema.sql # 100% Unified SQL DDL Schema (16 Core Tables)
-│   ├── grambandhan_schema.sql       # Modular Domain Entity Definitions
+│   ├── GramBondhon_unified_schema.sql # 100% Unified SQL DDL Schema (16 Core Tables)
+│   ├── GramBondhon_schema.sql       # Modular Domain Entity Definitions
 │   ├── DATABASE_HANDOFF.md          # Database Architecture & Integrity Specifications
 │   └── seed.js                      # Database Population & Demo Data Seeder
 │
