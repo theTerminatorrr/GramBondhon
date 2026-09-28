@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * GRAMBONDHON INVESTOR PROFILE & DASHBOARD CONTROLLER
+ * GramBondhon INVESTOR PROFILE & DASHBOARD CONTROLLER
  * 
  * Features:
  * - Photo 4: Post-login Hero banner ("Invest in the Earth's Future" with search & explore)
@@ -29,7 +29,7 @@ export class InvestorProfileController {
   private investorProfileSettings = {
     avatar: '/images/investor-rahat-khan.jpg',
     fullName: 'Rahat Khan',
-    email: 'rahat.khan@grambandhan.org',
+    email: 'rahat.khan@GramBondhon.org',
     investorId: 'GB-INV-8821',
     nid: '1988269120485921',
     phone: '+880 1711-892401',
@@ -137,7 +137,7 @@ export class InvestorProfileController {
   private showToastNotification: (msg: string) => void;
 
   constructor(
-    projectsController: ActiveProjectsController, 
+    projectsController: ActiveProjectsController,
     arg2: ((msg: string) => void) | MarketplaceController,
     arg3?: ((msg: string) => void) | MarketplaceController
   ) {
@@ -342,7 +342,7 @@ export class InvestorProfileController {
         return;
       }
 
-      const matches = recommendations.filter(item => 
+      const matches = recommendations.filter(item =>
         item.title.toLowerCase().includes(q) ||
         item.subtitle.toLowerCase().includes(q) ||
         item.key.toLowerCase().includes(q) ||
@@ -430,7 +430,7 @@ export class InvestorProfileController {
 
       if (query) {
         // Find best match in recommendations
-        const match = recommendations.find(item => 
+        const match = recommendations.find(item =>
           item.title.toLowerCase().includes(query) ||
           item.category.toLowerCase().includes(query) ||
           item.key.toLowerCase().includes(query)
@@ -487,8 +487,8 @@ export class InvestorProfileController {
       <aside class="dash-sidebar" id="dash-sidebar">
         <div>
           <!-- Brand Logo & Name -->
-          <a href="#" class="dash-brand-block" id="dash-brand-home" title="GramBandhan">
-            <img src="/images/logo-white.png" alt="GramBandhan" style="height: 32px; width: auto; max-width: 160px; object-fit: contain; display: block;" />
+          <a href="#" class="dash-brand-block" id="dash-brand-home" title="GramBondhon">
+            <img src="/images/logo-white.png" alt="GramBondhon" style="height: 32px; width: auto; max-width: 160px; object-fit: contain; display: block;" />
           </a>
 
           <!-- Floating circular arrow toggle button at the middle of the sidebar -->
@@ -995,7 +995,7 @@ export class InvestorProfileController {
 
     if (this.dashboardSearchQuery && this.dashboardSearchQuery.trim()) {
       const q = this.dashboardSearchQuery.trim().toLowerCase();
-      filtered = filtered.filter(p => 
+      filtered = filtered.filter(p =>
         p.name.toLowerCase().includes(q) ||
         p.bengaliName.toLowerCase().includes(q) ||
         p.district.toLowerCase().includes(q) ||
@@ -1048,13 +1048,13 @@ export class InvestorProfileController {
             <button class="btn btn-primary" id="btn-clear-empty-search" style="margin-top: 12px; background: #02221A;">Clear Search Filter</button>
           </div>
         ` : filtered.map(p => {
-          if (p.status === 'recent') {
-            // 1. FUNDING COLLECTION PHASE CARD
-            const raised = p.fundingRaisedBDT || 680000;
-            const goal = p.fundingGoalBDT || 850000;
-            const pct = p.fundingPercent || Math.min(100, Math.round((raised / goal) * 100));
+      if (p.status === 'recent') {
+        // 1. FUNDING COLLECTION PHASE CARD
+        const raised = p.fundingRaisedBDT || 680000;
+        const goal = p.fundingGoalBDT || 850000;
+        const pct = p.fundingPercent || Math.min(100, Math.round((raised / goal) * 100));
 
-            return `
+        return `
               <div class="port-proj-card port-proj-card-funding" data-project-id="${p.id}">
                 <div class="port-proj-img" style="background-image: url('${p.image}');">
                   <div class="port-proj-badges-top">
@@ -1124,9 +1124,9 @@ export class InvestorProfileController {
                 </div>
               </div>
             `;
-          } else if (p.status === 'ongoing') {
-            // 2. ONGOING FIELD PROJECT CARD
-            return `
+      } else if (p.status === 'ongoing') {
+        // 2. ONGOING FIELD PROJECT CARD
+        return `
               <div class="port-proj-card port-proj-card-ongoing" data-project-id="${p.id}">
                 <div class="port-proj-img" style="background-image: url('${p.image}');">
                   <div class="port-proj-badges-top">
@@ -1186,11 +1186,11 @@ export class InvestorProfileController {
                     </div>
                     <div class="milestones-stepper">
                       ${(p.progressMilestones || [
-                        { label: 'Land Prep & Sowing', date: p.startDate || '10 Aug', completed: true },
-                        { label: 'Bio-Fertilization', date: '25 Aug', completed: true },
-                        { label: 'Vegetative Growth', date: 'Current', completed: true, active: true },
-                        { label: 'Harvest & Settlement', date: p.expectedEndDate || '15 Dec', completed: false }
-                      ]).map((m, idx) => `
+            { label: 'Land Prep & Sowing', date: p.startDate || '10 Aug', completed: true },
+            { label: 'Bio-Fertilization', date: '25 Aug', completed: true },
+            { label: 'Vegetative Growth', date: 'Current', completed: true, active: true },
+            { label: 'Harvest & Settlement', date: p.expectedEndDate || '15 Dec', completed: false }
+          ]).map((m, idx) => `
                         <div class="milestone-node ${m.completed ? 'completed' : ''} ${m.active ? 'active' : ''}">
                           <div class="milestone-dot">${m.completed ? '✓' : (idx + 1)}</div>
                           <div class="milestone-label">${m.label}</div>
@@ -1227,9 +1227,9 @@ export class InvestorProfileController {
                 </div>
               </div>
             `;
-          } else {
-            // 3. COMPLETED PROJECT CARD (FILLED MIDDLE - NO BLANK SPACE)
-            return `
+      } else {
+        // 3. COMPLETED PROJECT CARD (FILLED MIDDLE - NO BLANK SPACE)
+        return `
               <div class="port-proj-card port-proj-card-completed" data-project-id="${p.id}">
                 <div class="port-proj-img" style="background-image: url('${p.image}');">
                   <div class="port-proj-badges-top">
@@ -1390,8 +1390,8 @@ export class InvestorProfileController {
                 </div>
               </div>
             `;
-          }
-        }).join('')}
+      }
+    }).join('')}
       </div>
     `;
 
@@ -1575,7 +1575,7 @@ export class InvestorProfileController {
     if (this.currentMarketCategory !== 'all') {
       filtered = marketProducts.filter(p => p.category === this.currentMarketCategory);
     }
-    const isRiceProduct = (p: typeof marketProducts[0]) => 
+    const isRiceProduct = (p: typeof marketProducts[0]) =>
       p.id.toLowerCase().includes('rice') ||
       p.name.toLowerCase().includes('rice') ||
       p.bengaliName.includes('চাল') ||
@@ -1589,14 +1589,14 @@ export class InvestorProfileController {
       if (isRiceSearch) {
         const riceItems = filtered.filter(isRiceProduct);
         const otherItems = filtered.filter(p => !isRiceProduct(p) && (
-          p.name.toLowerCase().includes(q) || 
+          p.name.toLowerCase().includes(q) ||
           p.bengaliName.toLowerCase().includes(q) ||
           p.artisanDistrict.toLowerCase().includes(q)
         ));
         filtered = [...riceItems, ...otherItems];
       } else {
-        filtered = filtered.filter(p => 
-          p.name.toLowerCase().includes(q) || 
+        filtered = filtered.filter(p =>
+          p.name.toLowerCase().includes(q) ||
           p.bengaliName.toLowerCase().includes(q) ||
           p.artisanDistrict.toLowerCase().includes(q)
         );
@@ -2104,10 +2104,10 @@ export class InvestorProfileController {
     subtotal: number,
     deliveryFee: number
   ): void {
-    let modal = document.getElementById('grambandhan-market-payment-modal');
+    let modal = document.getElementById('GramBondhon-market-payment-modal');
     if (!modal) {
       modal = document.createElement('div');
-      modal.id = 'grambandhan-market-payment-modal';
+      modal.id = 'GramBondhon-market-payment-modal';
       modal.className = 'invest-payment-modal-overlay';
       document.body.appendChild(modal);
     }
@@ -2237,11 +2237,11 @@ export class InvestorProfileController {
                 <div class="ip-gateway-details gateway-bank">
                   <div class="ip-merchant-box bank-merchant-box">
                     <div class="ip-box-header">
-                      <span class="badge-merchant" style="background:#E8F5EF;color:#047857;">GramBandhan Shariah Agro Escrow Fund</span>
+                      <span class="badge-merchant" style="background:#E8F5EF;color:#047857;">GramBondhon Shariah Agro Escrow Fund</span>
                       <strong>Bank: Islami Bank Bangladesh Ltd (IBBL)</strong>
                     </div>
                     <div class="ip-escrow-bank-table">
-                      <div class="row"><span>Account Name:</span><strong>GramBandhan Agro Shariah Escrow Fund Ltd</strong></div>
+                      <div class="row"><span>Account Name:</span><strong>GramBondhon Agro Shariah Escrow Fund Ltd</strong></div>
                       <div class="row"><span>Account Number:</span><strong style="font-family:monospace;letter-spacing:0.05em;">2050 7710 8899 001</strong></div>
                       <div class="row"><span>Branch:</span><strong>Dilkusha Commercial Area, Dhaka (Routing: 125271983)</strong></div>
                     </div>
@@ -2434,10 +2434,10 @@ export class InvestorProfileController {
     recipientPhone: string;
     recipientAddress: string;
   }): void {
-    let modal = document.getElementById('grambandhan-market-receipt-modal');
+    let modal = document.getElementById('GramBondhon-market-receipt-modal');
     if (!modal) {
       modal = document.createElement('div');
-      modal.id = 'grambandhan-market-receipt-modal';
+      modal.id = 'GramBondhon-market-receipt-modal';
       modal.className = 'project-question-modal-overlay';
       document.body.appendChild(modal);
     }
@@ -2451,7 +2451,7 @@ export class InvestorProfileController {
           <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.2);border:1px solid #10B981;padding:3px 12px;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.05em;color:#A7F3D0;margin-bottom:8px;">
             ✓ ORDER PAYMENT CONFIRMED
           </div>
-          <h3 style="margin:2px 0 4px;font-size:1.35rem;font-weight:800;">GramBandhan Marketplace Invoice</h3>
+          <h3 style="margin:2px 0 4px;font-size:1.35rem;font-weight:800;">GramBondhon Marketplace Invoice</h3>
           <p style="margin:0;font-size:0.8rem;color:#D1FAE5;">Order #${order.orderId} • Courier Delivery in 2-3 Days</p>
         </div>
 
@@ -2647,32 +2647,32 @@ export class InvestorProfileController {
 
         <div class="cashflow-waterfall-grid">
           ${[
-            { month: 'Jan 2026', sent: 90000, rcvd: 0 },
-            { month: 'Feb 2026', sent: 50000, rcvd: 0 },
-            { month: 'Mar 2026', sent: 30000, rcvd: 35100, note: 'Sundarbans Honey settled' },
-            { month: 'Apr 2026', sent: 70000, rcvd: 81650, note: 'Chuadanga Maize & Sylhet Craft' },
-            { month: 'May 2026', sent: 55000, rcvd: 75400, note: 'Faridpur Jute settled' },
-            { month: 'Jun 2026', sent: 45000, rcvd: 94400, note: 'Pabna Eid Cattle settled' },
-            { month: 'Jul 2026', sent: 80000, rcvd: 87350, note: 'Cumilla Strawberry & Haor Duck' },
-            { month: 'Aug 2026', sent: 60000, rcvd: 58200, note: 'Dinajpur Mustard settled' }
-          ].map(m => {
-            const maxVal = 100000;
-            const sentHeight = Math.max(10, Math.round((m.sent / maxVal) * 90));
-            const rcvdHeight = Math.max(10, Math.round((m.rcvd / maxVal) * 90));
-            return `
+        { month: 'Jan 2026', sent: 90000, rcvd: 0 },
+        { month: 'Feb 2026', sent: 50000, rcvd: 0 },
+        { month: 'Mar 2026', sent: 30000, rcvd: 35100, note: 'Sundarbans Honey settled' },
+        { month: 'Apr 2026', sent: 70000, rcvd: 81650, note: 'Chuadanga Maize & Sylhet Craft' },
+        { month: 'May 2026', sent: 55000, rcvd: 75400, note: 'Faridpur Jute settled' },
+        { month: 'Jun 2026', sent: 45000, rcvd: 94400, note: 'Pabna Eid Cattle settled' },
+        { month: 'Jul 2026', sent: 80000, rcvd: 87350, note: 'Cumilla Strawberry & Haor Duck' },
+        { month: 'Aug 2026', sent: 60000, rcvd: 58200, note: 'Dinajpur Mustard settled' }
+      ].map(m => {
+        const maxVal = 100000;
+        const sentHeight = Math.max(10, Math.round((m.sent / maxVal) * 90));
+        const rcvdHeight = Math.max(10, Math.round((m.rcvd / maxVal) * 90));
+        return `
               <div class="waterfall-col">
                 <div class="waterfall-bars">
                   <div class="wf-bar bar-sent" style="height: ${sentHeight}px;" title="Capital Sent: ৳ ${m.sent.toLocaleString()}">
-                    <span class="bar-tooltip">-৳${(m.sent/1000)}k</span>
+                    <span class="bar-tooltip">-৳${(m.sent / 1000)}k</span>
                   </div>
                   <div class="wf-bar bar-rcvd" style="height: ${rcvdHeight}px;" title="Received: ৳ ${m.rcvd.toLocaleString()}">
-                    <span class="bar-tooltip">${m.rcvd > 0 ? '+৳' + (m.rcvd/1000) + 'k' : '—'}</span>
+                    <span class="bar-tooltip">${m.rcvd > 0 ? '+৳' + (m.rcvd / 1000) + 'k' : '—'}</span>
                   </div>
                 </div>
                 <span class="wf-month-lbl">${m.month}</span>
               </div>
             `;
-          }).join('')}
+      }).join('')}
         </div>
       </div>
 
@@ -2717,9 +2717,9 @@ export class InvestorProfileController {
                   </td>
                 </tr>
               ` : filteredLedger.map(p => {
-                const totalReceived = p.investedAmountBDT + (p.actualReturnBDT || p.expectedProfitBDT);
-                const netProfit = (p.actualReturnBDT || p.expectedProfitBDT);
-                return `
+        const totalReceived = p.investedAmountBDT + (p.actualReturnBDT || p.expectedProfitBDT);
+        const netProfit = (p.actualReturnBDT || p.expectedProfitBDT);
+        return `
                   <tr>
                     <td>
                       <div class="tbl-proj-title">
@@ -2769,7 +2769,7 @@ export class InvestorProfileController {
                     </td>
                   </tr>
                 `;
-              }).join('')}
+      }).join('')}
             </tbody>
           </table>
         </div>
@@ -2815,11 +2815,11 @@ export class InvestorProfileController {
   }
 
   /**
-   * AI RISK ANALYSIS TAB: GramBandhan Krishi-AI Risk & Pre-Investment Forecaster
+   * AI RISK ANALYSIS TAB: GramBondhon Krishi-AI Risk & Pre-Investment Forecaster
    * Analyzes risk from 5-year previous data before investing
    */
   /**
-   * AI RISK ANALYSIS TAB: GramBandhan Krishi-AI Risk & Pre-Investment Forecaster
+   * AI RISK ANALYSIS TAB: GramBondhon Krishi-AI Risk & Pre-Investment Forecaster
    * Analyzes risk from 5-year previous data before investing in plain, easy-to-understand terms
    */
   private renderAiRiskTab(container: HTMLElement): void {
@@ -3067,11 +3067,11 @@ export class InvestorProfileController {
                 <span>In Simple Words (সহজ কথায়):</span>
               </div>
               <p class="ai-plain-summary-desc">
-                ${aiScore >= 8.5 
-                  ? `Your investment in <strong>${selectedProj.name}</strong> is well-protected. The farmland is located on elevated ground with zero historical flood damage, and wholesale off-take contracts guarantee selling prices upon harvest.`
-                  : aiScore >= 7.5
-                  ? `This project has moderate risk. While farmland is protected by canals, market price buffers are advised. The cooperative has a solid 95%+ completion record.`
-                  : `Elevated weather or open auction volatility detected. Recommended only for experienced investors with diversified holdings.`}
+                ${aiScore >= 8.5
+        ? `Your investment in <strong>${selectedProj.name}</strong> is well-protected. The farmland is located on elevated ground with zero historical flood damage, and wholesale off-take contracts guarantee selling prices upon harvest.`
+        : aiScore >= 7.5
+          ? `This project has moderate risk. While farmland is protected by canals, market price buffers are advised. The cooperative has a solid 95%+ completion record.`
+          : `Elevated weather or open auction volatility detected. Recommended only for experienced investors with diversified holdings.`}
               </p>
             </div>
 
@@ -4214,7 +4214,7 @@ export class InvestorProfileController {
    * Helper: Global event listener for investment payment modal
    */
   private setupInvestmentPaymentEventListener(): void {
-    window.addEventListener('grambandhan:open-invest-payment', (e: Event) => {
+    window.addEventListener('GramBondhon:open-invest-payment', (e: Event) => {
       const customEvt = e as CustomEvent;
       const { projectId, units } = customEvt.detail || {};
       this.openInvestmentPaymentModal(projectId, units || 1);
@@ -4240,10 +4240,10 @@ export class InvestorProfileController {
       project = ACTIVE_PROJECTS[0];
     }
 
-    let modal = document.getElementById('grambandhan-invest-payment-modal');
+    let modal = document.getElementById('GramBondhon-invest-payment-modal');
     if (!modal) {
       modal = document.createElement('div');
-      modal.id = 'grambandhan-invest-payment-modal';
+      modal.id = 'GramBondhon-invest-payment-modal';
       modal.className = 'invest-payment-modal-overlay';
       document.body.appendChild(modal);
     }
@@ -4412,11 +4412,11 @@ export class InvestorProfileController {
                 <div class="ip-gateway-details gateway-bank">
                   <div class="ip-merchant-box bank-merchant-box">
                     <div class="ip-box-header">
-                      <span class="badge-merchant" style="background:#E8F5EF;color:#047857;">GramBandhan Shariah Agro Escrow Fund</span>
+                      <span class="badge-merchant" style="background:#E8F5EF;color:#047857;">GramBondhon Shariah Agro Escrow Fund</span>
                       <strong>Bank: Islami Bank Bangladesh Ltd (IBBL)</strong>
                     </div>
                     <div class="ip-escrow-bank-table">
-                      <div class="row"><span>Account Name:</span><strong>GramBandhan Agro Shariah Escrow Fund Ltd</strong></div>
+                      <div class="row"><span>Account Name:</span><strong>GramBondhon Agro Shariah Escrow Fund Ltd</strong></div>
                       <div class="row"><span>Account Number:</span><strong style="font-family:monospace;letter-spacing:0.05em;">2050 7710 8899 001</strong></div>
                       <div class="row"><span>Branch:</span><strong>Gulshan Corporate Branch, Dhaka</strong></div>
                       <div class="row"><span>Routing Number:</span><strong style="font-family:monospace;">125272648</strong></div>
@@ -4509,8 +4509,8 @@ export class InvestorProfileController {
             trxInput.style.borderColor = '#EF4444';
             trxInput.focus();
           }
-          alert(selectedMethod === 'bank' 
-            ? 'Please enter your Bank Transfer Reference / Deposit Slip Number to verify your deposit.' 
+          alert(selectedMethod === 'bank'
+            ? 'Please enter your Bank Transfer Reference / Deposit Slip Number to verify your deposit.'
             : `Please enter your ${selectedMethod.toUpperCase()} Transaction ID (TrxID) to confirm your payment.`);
           return;
         }
@@ -4518,7 +4518,7 @@ export class InvestorProfileController {
         // Check 5 Lakh Limit
         if (this.stats.totalInvestmentBDT + totalAmount > 500000) {
           const remaining = Math.max(0, 500000 - this.stats.totalInvestmentBDT);
-          alert(`⚠️ Investment Limit Reached: As per GramBandhan policy, your total active portfolio investments cannot exceed ৳ 5,00,000 BDT.\n\nCurrently Invested: ৳ ${this.stats.totalInvestmentBDT.toLocaleString()} BDT\nAvailable Capacity: ৳ ${remaining.toLocaleString()} BDT\n\nPlease reduce your units.`);
+          alert(`⚠️ Investment Limit Reached: As per GramBondhon policy, your total active portfolio investments cannot exceed ৳ 5,00,000 BDT.\n\nCurrently Invested: ৳ ${this.stats.totalInvestmentBDT.toLocaleString()} BDT\nAvailable Capacity: ৳ ${remaining.toLocaleString()} BDT\n\nPlease reduce your units.`);
           return;
         }
 
@@ -4620,10 +4620,10 @@ export class InvestorProfileController {
     paymentMethod: string;
     trxId: string;
   }): void {
-    let modal = document.getElementById('grambandhan-invest-cert-modal');
+    let modal = document.getElementById('GramBondhon-invest-cert-modal');
     if (!modal) {
       modal = document.createElement('div');
-      modal.id = 'grambandhan-invest-cert-modal';
+      modal.id = 'GramBondhon-invest-cert-modal';
       modal.className = 'project-question-modal-overlay';
       document.body.appendChild(modal);
     }
@@ -4656,7 +4656,7 @@ export class InvestorProfileController {
         email: targetEmail,
         sms: targetPhone
       })
-    }).catch(() => {});
+    }).catch(() => { });
 
     modal.innerHTML = `
       <style>
@@ -4678,7 +4678,7 @@ export class InvestorProfileController {
             ✓ 100% SHARIAH COMPLIANT MUDARABAH ASSET
           </div>
           <h2 style="margin:2px 0;font-size:1.35rem;font-weight:800;letter-spacing:-0.02em;">Official Investment Share Certificate</h2>
-          <p style="margin:0;font-size:0.8rem;color:#D1FAE5;">GramBandhan Rural Agri-FinTech Escrow Collective • Dhaka, Bangladesh</p>
+          <p style="margin:0;font-size:0.8rem;color:#D1FAE5;">GramBondhon Rural Agri-FinTech Escrow Collective • Dhaka, Bangladesh</p>
         </div>
 
         <div style="padding: 20px 28px; background: #FFFFFF; overflow-y: auto; flex: 1;">
@@ -4968,10 +4968,10 @@ export class InvestorProfileController {
     targetPhone: string;
     currentDate: string;
   }): void {
-    let receiptModal = document.getElementById('grambandhan-digital-receipt-modal');
+    let receiptModal = document.getElementById('GramBondhon-digital-receipt-modal');
     if (!receiptModal) {
       receiptModal = document.createElement('div');
-      receiptModal.id = 'grambandhan-digital-receipt-modal';
+      receiptModal.id = 'GramBondhon-digital-receipt-modal';
       receiptModal.className = 'project-question-modal-overlay';
       document.body.appendChild(receiptModal);
     }
@@ -4986,7 +4986,7 @@ export class InvestorProfileController {
           <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);padding:3px 12px;border-radius:14px;font-size:0.72rem;font-weight:700;color:#D1FAE5;margin-bottom:4px;">
             📄 OFFICIAL DIGITAL RECEIPT & TRANSACTION VOUCHER
           </div>
-          <h3 style="margin:2px 0;font-size:1.25rem;font-weight:800;">GramBandhan Rural Agri-FinTech Escrow</h3>
+          <h3 style="margin:2px 0;font-size:1.25rem;font-weight:800;">GramBondhon Rural Agri-FinTech Escrow</h3>
           <p style="margin:0;font-size:0.75rem;color:#A7F3D0;">Bangladesh Bank Regulated Escrow Partner • BB-FIN-ESCROW-2026/09</p>
         </div>
 
@@ -5102,10 +5102,10 @@ export class InvestorProfileController {
    * OFFICIAL BANK SETTLEMENT ADVICE SLIP MODAL (BEFTN / NPSB ELECTRONIC CLEARING)
    */
   public openBankAdviceModal(p: InvestorPortfolioProject): void {
-    let modal = document.getElementById('grambandhan-bank-slip-modal');
+    let modal = document.getElementById('GramBondhon-bank-slip-modal');
     if (!modal) {
       modal = document.createElement('div');
-      modal.id = 'grambandhan-bank-slip-modal';
+      modal.id = 'GramBondhon-bank-slip-modal';
       modal.className = 'project-question-modal-overlay';
       document.body.appendChild(modal);
     }
@@ -5222,10 +5222,10 @@ export class InvestorProfileController {
    * WITHDRAWAL MODAL: Withdraw to Bank or bKash
    */
   public openWithdrawalModal(): void {
-    let modal = document.getElementById('grambandhan-withdraw-modal');
+    let modal = document.getElementById('GramBondhon-withdraw-modal');
     if (!modal) {
       modal = document.createElement('div');
-      modal.id = 'grambandhan-withdraw-modal';
+      modal.id = 'GramBondhon-withdraw-modal';
       modal.className = 'project-question-modal-overlay';
       document.body.appendChild(modal);
     }
@@ -5690,7 +5690,7 @@ export class InvestorProfileController {
     });
 
     // Listen to investment requests from Active Projects modal
-    window.addEventListener('grambandhan:invest-request', (e: Event) => {
+    window.addEventListener('GramBondhon:invest-request', (e: Event) => {
       const customEvt = e as CustomEvent;
       const detail = customEvt.detail;
       if (!detail) return;
@@ -5700,7 +5700,7 @@ export class InvestorProfileController {
         customEvt.preventDefault();
         const availableLimit = Math.max(0, 500000 - this.stats.totalInvestmentBDT);
         this.showToastNotification(`⚠️ Investment Limit Exceeded: Maximum total investment cannot exceed ৳ 5,00,000 BDT. You currently have ৳ ${this.stats.totalInvestmentBDT.toLocaleString()} BDT invested.`);
-        alert(`⚠️ Investment Limit Exceeded: As per GramBandhan policy, your total active portfolio investments cannot exceed ৳ 5,00,000 BDT.\n\nCurrently Invested: ৳ ${this.stats.totalInvestmentBDT.toLocaleString()} BDT\nMax Allowed Additional: ৳ ${availableLimit.toLocaleString()} BDT\n\nPlease adjust your units.`);
+        alert(`⚠️ Investment Limit Exceeded: As per GramBondhon policy, your total active portfolio investments cannot exceed ৳ 5,00,000 BDT.\n\nCurrently Invested: ৳ ${this.stats.totalInvestmentBDT.toLocaleString()} BDT\nMax Allowed Additional: ৳ ${availableLimit.toLocaleString()} BDT\n\nPlease adjust your units.`);
         return;
       }
 
@@ -5749,7 +5749,7 @@ export class InvestorProfileController {
     });
 
     // Listen to dashboard navigation event
-    window.addEventListener('grambandhan:open-dashboard', (e: Event) => {
+    window.addEventListener('GramBondhon:open-dashboard', (e: Event) => {
       const customEvt = e as CustomEvent;
       const tab = customEvt.detail?.tab || 'dashboard';
       const filter = customEvt.detail?.filter;
@@ -6065,7 +6065,7 @@ export class InvestorProfileController {
               <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="font-size: 1.6rem;">🔬</span>
                 <div>
-                  <h4 style="margin: 0; font-size: 0.95rem; color: #02221A;">DAE & GramBandhan Certified Field Audit</h4>
+                  <h4 style="margin: 0; font-size: 0.95rem; color: #02221A;">DAE & GramBondhon Certified Field Audit</h4>
                   <span style="font-size: 0.775rem; color: #64748B;">Lead Agronomist: <strong>${p.fieldInspector || 'Dr. M. Faruk (DAE Gazipur)'}</strong></span>
                 </div>
               </div>
@@ -6085,11 +6085,11 @@ export class InvestorProfileController {
             <h4 style="margin: 0 0 14px; font-size: 0.925rem; color: #02221A;">Verified Field Milestone Progress (মাঠ পর্যায়ের অগ্রগতি)</h4>
             <div class="ft-timeline">
               ${(p.progressMilestones || [
-                { label: 'Land Prep & Sowing', date: p.startDate || '10 Aug 2026', completed: true },
-                { label: 'Organic Bio-fertilization & Solar Aeration', date: '25 Aug 2026', completed: true },
-                { label: 'Tiller Maturation & Biometric Monitoring', date: '15 Sep 2026', completed: true, active: true },
-                { label: 'Harvesting, Solar Cold Storage & Payout', date: p.expectedEndDate || '15 Dec 2026', completed: false }
-              ]).map((m, idx) => `
+        { label: 'Land Prep & Sowing', date: p.startDate || '10 Aug 2026', completed: true },
+        { label: 'Organic Bio-fertilization & Solar Aeration', date: '25 Aug 2026', completed: true },
+        { label: 'Tiller Maturation & Biometric Monitoring', date: '15 Sep 2026', completed: true, active: true },
+        { label: 'Harvesting, Solar Cold Storage & Payout', date: p.expectedEndDate || '15 Dec 2026', completed: false }
+      ]).map((m, idx) => `
                 <div class="ft-timeline-item ${m.completed ? 'done' : ''} ${m.active ? 'current' : ''}">
                   <div class="ft-timeline-marker">${m.completed ? '✓' : (idx + 1)}</div>
                   <div class="ft-timeline-body">
@@ -6264,7 +6264,7 @@ export class InvestorProfileController {
       const questionText = txtArea?.value.trim() || 'Inquiry regarding crop canopy development and biometric timeline.';
       const respBox = modal.querySelector('#pq-response-box') as HTMLElement;
       const submitBtn = modal.querySelector('#btn-submit-pq-modal') as HTMLButtonElement;
-      
+
       if (respBox && submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting Question...';
@@ -6330,7 +6330,7 @@ export class InvestorProfileController {
       <div class="dividend-receipt-dialog">
         <div class="dr-header">
           <div class="dr-brand-row">
-            <div class="dr-brand-logo">🌿 GRAMBANDHAN</div>
+            <div class="dr-brand-logo">🌿 GramBondhon </div>
             <span class="dr-official-badge">OFFICIAL SETTLEMENT VOUCHER</span>
           </div>
           <h2>Halal Dividend & Capital Disbursement Voucher</h2>
@@ -6404,7 +6404,7 @@ export class InvestorProfileController {
             </div>
             <div class="dr-sig-box">
               <div class="dr-sig-stamp">✓ AUDITED & VERIFIED</div>
-              <span>GramBandhan Platform Treasury</span>
+              <span>GramBondhon Platform Treasury</span>
             </div>
           </div>
         </div>
@@ -6500,3 +6500,5 @@ export class InvestorProfileController {
     return name.slice(0, 2).toUpperCase();
   }
 }
+
+
