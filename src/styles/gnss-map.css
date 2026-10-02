@@ -1,0 +1,742 @@
+/**
+ * =========================================================================
+ * REAL GNSS GOOGLE MAP NAVIGATION & TELEMETRY STYLES
+ * High-precision Agricultural GNSS Satellite & Roadmap tracking across Bangladesh
+ * Matches verified GNSS HUD, bottom plot selector, and dual soil/ambient telemetry cards
+ * =========================================================================
+ */
+
+.gnss-section {
+  padding: 56px 0 48px;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  position: relative;
+}
+
+.gnss-section .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Container when embedded inside Investor Dashboard */
+.dash-gnss-full-panel {
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid #E2E8F0;
+  padding: 22px 24px 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  margin-bottom: 22px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 1. Header Row */
+.gnss-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.gnss-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.gnss-radio-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.08);
+}
+
+.gnss-radio-pulse {
+  animation: gnss-pulse 2s infinite ease-in-out;
+}
+
+@keyframes gnss-pulse {
+  0% { transform: scale(0.96); opacity: 0.85; }
+  50% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(0.96); opacity: 0.85; }
+}
+
+.gnss-heading-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gnss-main-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.gnss-live-badge {
+  background: #ECFDF5;
+  color: #047857;
+  border: 1px solid #10B981;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gnss-subtitle {
+  font-size: 0.875rem;
+  color: #64748B;
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+/* Header Top-Right Controls */
+.gnss-top-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gnss-filter-pill {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #334155;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.gnss-filter-pill:hover {
+  background: #F1F5F9;
+  border-color: #94A3B8;
+}
+
+.gnss-filter-pill.active {
+  background: #F1F5F9;
+  border-color: #064E3B;
+  color: #064E3B;
+  font-weight: 700;
+}
+
+.gnss-layer-group {
+  display: flex;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 2px;
+}
+
+.gnss-layer-btn {
+  background: transparent;
+  border: none;
+  padding: 5px 13px;
+  border-radius: 18px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.gnss-layer-btn.active {
+  background: #064E3B;
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(6, 78, 59, 0.2);
+}
+
+.gnss-layer-btn:hover:not(.active) {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+.gnss-external-btn {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  color: #0F172A;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.gnss-external-btn:hover {
+  background: #F8FAFC;
+  border-color: #047857;
+  color: #047857;
+}
+
+/* 2. Division Navigation Bar */
+.gnss-division-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.gnss-division-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.gnss-nav-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+.gnss-div-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gnss-div-pill {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #475569;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.gnss-div-pill:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+.gnss-div-pill.active {
+  background: #064E3B;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* 3. Main Two-Column Viewport */
+.gnss-viewport-grid {
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 20px;
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) {
+  .gnss-viewport-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Map Column */
+.gnss-map-wrapper {
+  position: relative;
+  height: 540px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.1);
+  background: #0F172A;
+}
+
+.gnss-map-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Floating Top-Left GNSS Live HUD */
+.gnss-hud-pill {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 500;
+  background: rgba(6, 32, 24, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 8px 14px;
+  border-radius: 12px;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+}
+
+.gnss-hud-coords-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.825rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #F8FAFC;
+}
+
+.gnss-hud-rtk-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #34D399;
+  margin-top: 3px;
+}
+
+/* Floating Map Quick Controls (Top Right) */
+.gnss-map-controls-floating {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gnss-map-ctrl-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(6, 32, 24, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gnss-map-ctrl-btn:hover {
+  background: #047857;
+  border-color: #34D399;
+}
+
+/* 4. Bottom Floating Overlay (SELECT FARM PLOT) */
+.gnss-bottom-plot-bar {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 500;
+  background: rgba(4, 26, 19, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 30px;
+  padding: 7px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.gnss-plot-bar-label {
+  font-size: 0.725rem;
+  font-weight: 800;
+  color: #F8FAFC;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gnss-plot-pills-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+  padding: 2px 0;
+}
+
+.gnss-plot-pills-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.gnss-plot-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #E2E8F0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.775rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.gnss-plot-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+}
+
+.gnss-plot-pill.active {
+  background: #10B981 !important;
+  color: #02221A !important;
+  font-weight: 700;
+  border-color: #34D399 !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
+}
+
+/* 5. Right-Side Telemetry Sidebar Panel */
+.gnss-telemetry-panel {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+.gnss-telemetry-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.gnss-telemetry-badge-label {
+  font-size: 0.725rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+.gnss-status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gnss-status-badge.on-track {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #047857;
+}
+
+.gnss-status-badge.attention {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  color: #D97706;
+}
+
+.gnss-plot-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.gnss-plot-category {
+  font-size: 0.825rem;
+  color: #64748B;
+  margin: 4px 0 16px;
+  font-weight: 500;
+}
+
+/* Telemetry Specs Box */
+.gnss-specs-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 8px;
+  column-gap: 16px;
+  margin-bottom: 16px;
+}
+
+.gnss-spec-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.gnss-spec-key {
+  font-size: 0.675rem;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gnss-spec-val {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.gnss-spec-val.rtk-highlight {
+  color: #059669;
+}
+
+/* Crop Cycle Progress */
+.gnss-progress-wrap {
+  margin-bottom: 16px;
+}
+
+.gnss-progress-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+}
+
+.gnss-progress-title {
+  color: #64748B;
+  font-weight: 600;
+}
+
+.gnss-progress-pct {
+  color: #0F172A;
+  font-weight: 800;
+}
+
+.gnss-progress-bar-track {
+  height: 8px;
+  background: #E2E8F0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gnss-progress-bar-fill {
+  height: 100%;
+  background: #064E3B;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* 6. Dual Metric Cards (Soil Moisture & Field Ambient) */
+.gnss-metrics-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.gnss-metric-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.gnss-metric-box:hover {
+  border-color: #CBD5E1;
+}
+
+.gnss-metric-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.775rem;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.gnss-metric-header.soil {
+  color: #0284C7;
+}
+
+.gnss-metric-header.ambient {
+  color: #EA580C;
+}
+
+.gnss-metric-value {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+/* 7. Producer & Flood Risk Row */
+.gnss-lead-risk-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #475569;
+  padding: 10px 0;
+  border-top: 1px solid #F1F5F9;
+  margin-bottom: 12px;
+}
+
+.gnss-lead-producer strong {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.gnss-flood-risk span {
+  font-weight: 700;
+}
+
+.gnss-flood-risk .risk-moderate {
+  color: #D97706;
+}
+
+.gnss-flood-risk .risk-low {
+  color: #059669;
+}
+
+.gnss-flood-risk .risk-elevated {
+  color: #DC2626;
+}
+
+/* 8. Bottom Capital & Inspect Action */
+.gnss-telemetry-bottom-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #E2E8F0;
+}
+
+.gnss-capital-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.gnss-capital-label {
+  font-size: 0.725rem;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.gnss-capital-amount {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.gnss-inspect-btn {
+  background: #064E3B;
+  color: #FFFFFF;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 0.825rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(6, 78, 59, 0.2);
+}
+
+.gnss-inspect-btn:hover {
+  background: #047857;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(6, 78, 59, 0.25);
+}
+
+/* Custom Marker Styling */
+.gnss-field-marker-core {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #EF4444;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.gnss-field-marker-core::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #EF4444;
+}
+
+.gnss-marker-pulse-ring {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.35);
+  animation: gnss-marker-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes gnss-marker-ping {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}

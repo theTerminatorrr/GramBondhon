@@ -13,7 +13,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const port = configService.get<number>('PORT', 3001);
   const apiPrefix = configService.get<string>('API_PREFIX', 'api/v1');
-  const corsOrigins = configService.get<string>('CORS_ORIGINS', 'http://localhost:3000');
+  const corsOrigins = configService.get<string>('CORS_ORIGINS', 'http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173');
   const swaggerEnabled = configService.get<string>('SWAGGER_ENABLED', 'true') === 'true';
 
   app.use(helmet({ crossOriginResourcePolicy: false }));

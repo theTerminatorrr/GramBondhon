@@ -1,5 +1,5 @@
 ﻿// seed.js
-// Populates the GramBondhon database with sample data for demo/dev purposes.
+// Populates the grambandhan database with sample data for demo/dev purposes.
 // Run with: node seed.js
 //
 // Insertion order matters ΓÇö each table only inserts after the tables
@@ -13,7 +13,7 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  console.log('Seeding GramBondhon database...\n');
+  console.log('Seeding grambandhan database...\n');
 
   // ------------------------------------------------------------
   // 1. USERS (base identity ΓÇö everything else hangs off this)

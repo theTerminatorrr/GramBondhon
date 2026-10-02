@@ -1,11 +1,8 @@
 node_modules
 dist
-dist-ssr
-target
-*.local
-.vscode
-.idea
-.temp_jony_gm
 .env
 .env*.local
-*.log
+.DS_Store
+*.local
+*.db-wal
+*.db-shm

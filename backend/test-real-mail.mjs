@@ -21,7 +21,7 @@ async function testGmail() {
         <div style="font-family:sans-serif;max-width:600px;margin:auto;padding:24px;border:2px solid #10B981;border-radius:12px;background:#ffffff;">
           <div style="text-align:center;background:linear-gradient(135deg,#02221A,#064E3B);padding:20px;border-radius:8px;color:#fff;">
             <h2 style="margin:0 0 6px 0;color:#A7F3D0;">Official Investment Share Certificate</h2>
-            <p style="margin:0;font-size:13px;color:#D1FAE5;">GramBondhon Rural Agri-FinTech Escrow Collective • Dhaka, Bangladesh</p>
+            <p style="margin:0;font-size:13px;color:#D1FAE5;">GramBandhan Rural Agri-FinTech Escrow Collective • Dhaka, Bangladesh</p>
           </div>
           <div style="padding:20px 0;">
             <p>Dear <strong>Rahat Khan</strong> (NID: 1988269120485921),</p>

@@ -1,0 +1,506 @@
+/* =========================================================================
+   SDG IMPACT ALIGNMENT SECTION
+   UN Sustainable Development Goals — 3D Flip Cards
+   Dark agro-emerald glassmorphism theme, 500ms smooth flip animation
+   ========================================================================= */
+
+/* ─── Section Shell ─────────────────────────────────────────────────────── */
+.sdg-section {
+  background: linear-gradient(170deg, #040F0C 0%, #061910 35%, #02140E 70%, #05190F 100%);
+  padding: 100px 0 110px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Atmospheric noise overlay */
+.sdg-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 15% 25%, rgba(16, 185, 129, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 70%, rgba(6, 78, 59, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 50% 50%, rgba(2, 44, 30, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Animated mesh grid lines */
+.sdg-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* ─── Section Header ────────────────────────────────────────────────────── */
+.sdg-header {
+  text-align: center;
+  margin-bottom: 68px;
+  position: relative;
+  z-index: 1;
+}
+
+.sdg-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34D399;
+  padding: 7px 18px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  backdrop-filter: blur(8px);
+}
+
+.sdg-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 8px #34D399;
+  animation: sdg-pulse 2s infinite;
+}
+
+@keyframes sdg-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+.sdg-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.sdg-title span {
+  background: linear-gradient(135deg, #34D399 0%, #10B981 40%, #6EE7B7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sdg-subtitle {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ─── UN SDG Logo Strip ─────────────────────────────────────────────────── */
+.sdg-un-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px 0 60px;
+  opacity: 0.65;
+}
+
+.sdg-un-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sdg-un-divider {
+  width: 28px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Cards Grid ────────────────────────────────────────────────────────── */
+.sdg-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1100px) {
+  .sdg-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sdg-grid .sdg-card:nth-child(4),
+  .sdg-grid .sdg-card:nth-child(5) {
+    grid-column: span 1;
+  }
+  /* Center last two cards */
+  .sdg-grid {
+    justify-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .sdg-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .sdg-grid .sdg-card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: 280px;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .sdg-grid {
+    grid-template-columns: 1fr;
+  }
+  .sdg-grid .sdg-card:nth-child(5) {
+    grid-column: auto;
+    max-width: 100%;
+  }
+}
+
+/* ─── 3D Flip Card Wrapper ──────────────────────────────────────────────── */
+.sdg-card {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.sdg-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.45, 0.05, 0.1, 0.95);
+  border-radius: 18px;
+}
+
+.sdg-card:hover .sdg-card-inner,
+.sdg-card.flipped .sdg-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* ─── Card Face Shared ──────────────────────────────────────────────────── */
+.sdg-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* ─── Card Front ────────────────────────────────────────────────────────── */
+.sdg-face-front {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 22px 20px 24px;
+  /* Lighter: SDG color tint over a medium-dark base — clearly identifiable */
+  background:
+    linear-gradient(180deg, var(--sdg-tint-top) 0%, var(--sdg-tint-bot) 100%);
+  border: 1px solid var(--sdg-border-front);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 20px 50px -12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* SDG color accent bar — taller and more prominent */
+.sdg-face-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--sdg-color);
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 2px 12px var(--sdg-glow);
+}
+
+/* Large number watermark — lighter so it reads on the lighter background */
+.sdg-watermark {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.12);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Goal number badge */
+.sdg-goal-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--sdg-color);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px var(--sdg-glow);
+}
+
+/* Icon */
+.sdg-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+  color: var(--sdg-color);
+  filter: drop-shadow(0 2px 8px var(--sdg-glow));
+}
+
+/* Front title */
+.sdg-front-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+/* UN label */
+.sdg-front-un-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--sdg-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+}
+
+/* Hover hint */
+.sdg-hover-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.sdg-card:hover .sdg-hover-hint {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sdg-hover-hint svg {
+  transition: transform 0.2s;
+}
+
+.sdg-card:hover .sdg-hover-hint svg {
+  transform: rotate(15deg);
+}
+
+/* ─── Card Back ─────────────────────────────────────────────────────────── */
+.sdg-face-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px 24px;
+  /* Brighter back: SDG color tint blended with back-start/end */
+  background: linear-gradient(150deg, var(--sdg-back-start) 0%, var(--sdg-back-end) 100%);
+  border: 1px solid var(--sdg-border);
+  box-shadow:
+    0 20px 50px -12px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.sdg-face-back::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--sdg-glow-bg) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.sdg-back-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.sdg-back-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.sdg-back-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.sdg-back-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0 0 14px;
+  position: relative;
+}
+
+.sdg-back-story {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  flex: 1;
+  position: relative;
+}
+
+/* Impact metric chip */
+.sdg-impact-metric {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 14px 0;
+  position: relative;
+}
+
+.sdg-metric-number {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+  display: block;
+  line-height: 1;
+}
+
+.sdg-metric-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 3px;
+  display: block;
+}
+
+/* Learn more link */
+.sdg-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+  padding-top: 2px;
+}
+
+.sdg-learn-more:hover {
+  color: #FFFFFF;
+}
+
+.sdg-learn-more svg {
+  transition: transform 0.2s;
+}
+
+.sdg-learn-more:hover svg {
+  transform: translateX(3px);
+}
+
+/* ─── Stats Counter Row ─────────────────────────────────────────────────── */
+.sdg-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.sdg-stat-item {
+  background: rgba(4, 15, 10, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.sdg-stat-number {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.04em;
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.sdg-stat-number .sdg-stat-suffix {
+  color: #34D399;
+}
+
+.sdg-stat-label {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .sdg-stats-row {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  .sdg-stat-item {
+    padding: 20px 16px;
+  }
+
+  .sdg-section {
+    padding: 72px 0 80px;
+  }
+
+  .sdg-header {
+    margin-bottom: 44px;
+  }
+}

@@ -1,8 +1,8 @@
-# 🌱 GramBondhon — Enterprise Backend Architecture
+# 🌱 GramBandhan — Enterprise Backend Architecture
 
-Welcome to the backend service for **GramBondhon** — a decentralized, digital agricultural financing and profit-sharing ecosystem connecting rural farmers with institutional and retail investors through transparent milestone escrow and blockchain verification.
+Welcome to the backend service for **GramBandhan** — a decentralized, digital agricultural financing and profit-sharing ecosystem connecting rural farmers with institutional and retail investors through transparent milestone escrow and blockchain verification.
 
-Developed and maintained by **Muhutasim** for the GramBondhon team.
+Developed and maintained by **Muhutasim** for the GramBandhan team.
 
 ---
 
@@ -76,7 +76,7 @@ cp .env.example .env
 Open `.env` and configure your local PostgreSQL database URL and JWT secret:
 
 ```env
-DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/GramBondhon?schema=public"
+DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/grambandhan?schema=public"
 JWT_SECRET="your-super-secure-jwt-secret-min-32-chars"
 ```
 

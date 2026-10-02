@@ -1,6 +1,6 @@
-# 🌾 GramBondhon — Unified Database Architecture & Handoff Guide
+# 🌾 GramBandhan — Unified Database Architecture & Handoff Guide
 
-This guide documents the **Unified Enterprise Database Architecture** for GramBondhon, built by **Muhutasim**.
+This guide documents the **Unified Enterprise Database Architecture** for GramBandhan, built by **Muhutasim**.
 
 It satisfies **100% of the functional requirements** in the Project SRS across all 16 modules, while providing native support for the **Double-Entry Financial Accounting Ledger** and **Base Sepolia Smart Contract Settlement**.
 
@@ -34,17 +34,17 @@ To deploy directly to any local or cloud PostgreSQL instance (Supabase, Neon, AW
 # 1. Access PostgreSQL
 psql -U postgres
 
-# 2. Create the GramBondhon database
-CREATE DATABASE GramBondhon;
+# 2. Create the GramBandhan database
+CREATE DATABASE grambandhan;
 \q
 
 # 3. Execute the Unified SQL DDL Script
-psql -U postgres -d GramBondhon -f GramBondhon_unified_schema.sql
+psql -U postgres -d grambandhan -f grambandhan_unified_schema.sql
 ```
 
 Verify all tables and indexes deployed cleanly:
 ```bash
-psql -U postgres -d GramBondhon -c "\dt"
+psql -U postgres -d grambandhan -c "\dt"
 ```
 You should see all 16+ core tables listed.
 
@@ -57,7 +57,7 @@ You should see all 16+ core tables listed.
 npm install prisma @prisma/client
 
 # 2. Configure DATABASE_URL in .env
-DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/GramBondhon?schema=public"
+DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/grambandhan?schema=public"
 
 # 3. Generate Prisma Client
 npx prisma generate
