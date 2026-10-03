@@ -3,36 +3,36 @@ version: '3.8'
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: grambandhan-postgres
+    container_name: GramBondhon-postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgrespassword
-      POSTGRES_DB: grambandhan
+      POSTGRES_DB: GramBondhon
     ports:
       - "5432:5432"
     volumes:
-      - grambandhan_pgdata:/var/lib/postgresql/data
+      - GramBondhon_pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d grambandhan"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d GramBondhon"]
       interval: 10s
       timeout: 5s
       retries: 5
 
   redis:
     image: redis:7-alpine
-    container_name: grambandhan-redis
+    container_name: GramBondhon-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
-      - grambandhan_redisdata:/data
+      - GramBondhon_redisdata:/data
 
   api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: grambandhan-api
+    container_name: GramBondhon-api
     restart: unless-stopped
     depends_on:
       postgres:
@@ -42,13 +42,13 @@ services:
     environment:
       PORT: 3001
       NODE_ENV: production
-      DATABASE_URL: "postgresql://postgres:postgrespassword@postgres:5432/grambandhan?schema=public"
+      DATABASE_URL: "postgresql://postgres:postgrespassword@postgres:5432/GramBondhon?schema=public"
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      JWT_SECRET: production-secret-key-grambandhan
+      JWT_SECRET: production-secret-key-GramBondhon
     ports:
       - "3001:3001"
 
 volumes:
-  grambandhan_pgdata:
-  grambandhan_redisdata:
+  GramBondhon_pgdata:
+  GramBondhon_redisdata:

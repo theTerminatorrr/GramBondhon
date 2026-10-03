@@ -1,5 +1,5 @@
 ﻿-- ============================================================================
--- ðŸŒ± GramBandhan: Unified Enterprise PostgreSQL Database Architecture
+-- ðŸŒ± GramBondhon: Unified Enterprise PostgreSQL Database Architecture
 -- Comprehensive Multi-Tier Schema: 16 SRS Modules + Double-Entry Ledger + Blockchain Settlement
 -- Target RDBMS: PostgreSQL 16+
 -- ============================================================================

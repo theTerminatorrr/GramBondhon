@@ -1,12 +1,12 @@
 ﻿-- ============================================================
--- GRAMBANDHAN ΓÇö Smart Rural Investment Platform
+-- GramBondhon ΓÇö Smart Rural Investment Platform
 -- PostgreSQL Database Schema
 -- Derived from: SRS Class Diagram (S6.5), DFD (S6.1), and
 -- Functional Requirements (Ch. 4)
 -- ============================================================
 
 -- Run this against an empty database:
---   psql -U postgres -d grambandhan -f grambandhan_schema.sql
+--   psql -U postgres -d GramBondhon -f GramBondhon_schema.sql
 
 -- ------------------------------------------------------------
 -- 0. ENUM TYPES (used for controlled, fixed-choice columns)
